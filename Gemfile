@@ -20,7 +20,7 @@ gem 'stimulus-rails', '1.3.4'
 gem 'cssbundling-rails', '1.4.1'
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
-# gem "bcrypt", "~> 3.1.7"
+gem 'bcrypt', '~> 3.1.7'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', '1.2024.2', platforms: %i[windows jruby]
@@ -37,10 +37,13 @@ gem 'bootsnap', '1.18.4', require: false
 gem 'kamal', '2.4.0', require: false
 
 # Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
-gem 'thruster', '0.1.9', require: false
+gem 'thruster', '0.1.10', require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
+
+# A set of common locale data and translations to internationalize and/or localize your Rails applications
+gem 'rails-i18n', '8.0.1'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -66,7 +69,7 @@ group :development do
   # Automatic Rails code style checking tool.
   gem 'rubocop-rails', '2.28.0', require: false
   # A collection of RuboCop cops to check for performance optimizations in Ruby code.
-  gem 'rubocop-performance', '1.23.0', require: false
+  gem 'rubocop-performance', '1.23.1', require: false
   # Code style checking for RSpec files
   gem 'rubocop-rspec', '3.3.0', require: false
   gem 'rubocop-rspec_rails', '2.30.0', require: false
