@@ -20,7 +20,7 @@ gem 'stimulus-rails', '1.3.4'
 gem 'cssbundling-rails', '1.4.1'
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
-gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '3.1.20'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', '1.2024.2', platforms: %i[windows jruby]
@@ -44,6 +44,13 @@ gem 'thruster', '0.1.10', require: false
 
 # A set of common locale data and translations to internationalize and/or localize your Rails applications
 gem 'rails-i18n', '8.0.1'
+
+# Flexible authentication solution for Rails with Warden
+gem 'devise', '4.9.4'
+# Translations for the devise gem
+gem 'devise-i18n', '1.12.1'
+# Simple authorization solution for Rails
+gem 'cancancan', '3.6.1'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

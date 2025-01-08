@@ -1,0 +1,11 @@
+Lint/UnusedMethodArgument:
+  Exclude:
+    - 'app/models/ability.rb'
+
+Layout/LineLength:
+  Exclude:
+    - 'config/initializers/devise.rb'
+
+Metrics/MethodLength:
+  Exclude:
+    - 'db/migrate/20250108052319_devise_create_users.rb'

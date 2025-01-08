@@ -1,6 +1,66 @@
 uk:
   appname: "дядько Скрудж"
 
+  forms:
+    messages:
+      errors:
+        one: "Одна помилка не дає зберегти цей запис:"
+        few: "%{count} помилки не дають зберегти цей запис:"
+        many: "%{count} помилок не дають зберегти цей запис:"
+        other: "%{count} помилка:"
+
+  button:
+    back: "Назад"
+
   main:
     index:
       welcome_html: "Вітаємо у нумізматичному магазині &quot;дядько Скрудж&quot;!"
+
+  alert:
+    cancan_access_denied: "Ви не маєте прав для доступу до цієї сторінки"
+
+  devise:
+    sessions:
+      new:
+        title: "Вхід"
+        login: "Ввійти"
+        email: "Email:"
+        password: "Пароль:"
+        remember_me: "Запам'ятати мене"
+    registrations:
+      new:
+        title: "Зареєструватися у магазині"
+        email: "Email:"
+        password: "Пароль:"
+        password_confirmation: "Підтвердження паролю:"
+        characters_min: "символів мінімум"
+        sign_up: "Зареєструватися"
+      edit:
+        title: "Редагувати профіль"
+        new_password: "Новий пароль:"
+        new_password_blank: "залиште поле пустим, якщо не хочете змінювати пароль"
+        new_password_confirmation: "Підтвердження нового паролю:"
+        characters_min: "символів мінімум"
+        current_password: "Поточний пароль:"
+        current_password_confirmation: "для підтвердження змін, введіть поточний пароль"
+        update: "Оновити профіль"
+        title_delete: "Видалити мій профіль і всі мої дані"
+        unhappy: "Не сподобався магазин?"
+        delete_account: "Видалити мій профіль"
+        delete_confirm: "Точно видалити профіль? Відновити буде не можливо!"
+    shared:
+      links:
+        forgot_password: "Забули пароль?"
+        log_in: "Ввійти"
+        sign_up: "Зареєструватися"
+    passwords:
+      new:
+        title: "Забули пароль?"
+        email: "Email на який зареєстровано профіль:"
+        submit: "Надіслати мені іструкції для скидання паролю"
+      edit:
+        title: "Змінити мій пароль"
+        new_password: "Новий пароль:"
+        new_password_confirmation: "Підтвердження нового паролю:"
+        characters_min: "символів мінімум"
+        submit: "Змінити"
