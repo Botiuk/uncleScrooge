@@ -24,7 +24,19 @@
   </head>
 
   <body>
-    <%= render 'shared/flash_messages' %>
-    <%= yield %>
+    <div x-data="{ cartOpen: false , isOpen: false }" class="bg-white">
+      <%= render 'shared/header' %>
+      
+      <%= render 'shared/cart_open' %>
+
+      <main class="my-8">
+        <div class="container mx-auto px-6 py-3">
+          <%= render 'shared/flash_messages' %>
+          <%= yield %>
+        </div>
+      </main>
+
+      <%= render 'shared/footer' %>
+    </div>
   </body>
 </html>

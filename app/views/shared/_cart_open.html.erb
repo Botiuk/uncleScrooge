@@ -1,0 +1,49 @@
+<div :class="cartOpen ? 'translate-x-0 ease-out' : 'translate-x-full ease-in'" class="fixed right-0 top-0 max-w-xs w-full h-full px-6 py-4 transition duration-300 transform overflow-y-auto bg-white border-l-2 border-gray-300">
+    <div class="flex items-center justify-between">
+        <h3 class="text-2xl font-medium text-gray-700"><%= t('.title') %></h3>
+        <button @click="cartOpen = !cartOpen" class="text-gray-600 focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+        </button>
+    </div>
+    <hr class="my-3">
+
+    <div class="flex justify-between mt-6">
+        <div class="flex">
+            <img class="h-20 w-20 object-cover rounded" src="" alt="Product image">
+            <div class="mx-3">
+                <h3 class="text-sm text-gray-600">Product name</h3>
+                <div class="flex items-center mt-2">
+                    <button class="text-gray-500 focus:outline-none focus:text-gray-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                    </button>
+                    <span class="text-gray-700 mx-2">quantity</span>
+                    <button class="text-gray-500 focus:outline-none focus:text-gray-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <span class="text-gray-600">Price</span>
+    </div>
+
+    <div class="mt-8">
+        <form class="flex items-center justify-center">
+            <input class="form-input w-48" type="text" placeholder="<%= t('.add_promocode') %>">
+            <button class="ml-3 flex items-center px-3 py-2 bg-blue-600 text-white text-sm uppercase font-medium rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                <span><%= t('button.apply') %></span>
+            </button>
+        </form>
+    </div>
+    <a class="flex items-center justify-center mt-4 px-3 py-2 bg-blue-600 text-white text-sm uppercase font-medium rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+        <span><%= t('button.сheckout') %></span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+        </svg>
+    </a>
+</div>

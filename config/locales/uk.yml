@@ -1,5 +1,6 @@
 uk:
   appname: "дядько Скрудж"
+  author: "Svitlana Botiuk"
 
   forms:
     messages:
@@ -9,15 +10,30 @@ uk:
         many: "%{count} помилок не дають зберегти цей запис:"
         other: "%{count} помилка:"
 
+  alert:
+    cancan_access_denied: "Ви не маєте прав для доступу до цієї сторінки"
+
   button:
     back: "Назад"
+    search: "Пошук"
+    сheckout: "Оплата"
+    apply: "Застосувати"
+
+  navbar:
+    coins: "Монети"
+    coins_set: "Набори монет"
+    accessories: "Аксесуари"
+    contacts: "Контакти"
+    profile: "Мій профіль"
 
   main:
     index:
       welcome_html: "Вітаємо у нумізматичному магазині &quot;дядько Скрудж&quot;!"
 
-  alert:
-    cancan_access_denied: "Ви не маєте прав для доступу до цієї сторінки"
+  shared:
+    cart_open:
+      title: "Моя корзина"
+      add_promocode: "Додати код на знижку"
 
   devise:
     sessions:

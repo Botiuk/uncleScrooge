@@ -1,0 +1,14 @@
+<footer class="bg-gray-200">
+    <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+        <%= link_to t('appname'), root_path, class: "text-xl font-bold text-gray-500 hover:text-gray-400" %>
+        <p class="py-2 text-gray-500 sm:py-0">
+            <%= "\u00A9"%>
+            <% if Date.today.year == 2025 %>
+                2025
+            <% else %>
+                2025-<%= Date.today.year %>
+            <% end %>
+            <%= link_to t('author'), "https://github.com/Botiuk", target: :_blank, class: "" %>
+        </p>
+    </div>
+</footer>
