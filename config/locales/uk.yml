@@ -53,6 +53,7 @@ uk:
         sign_up: "Зареєструватися"
       edit:
         title: "Редагувати профіль"
+        email: "Email:"
         new_password: "Новий пароль:"
         new_password_blank: "залиште поле пустим, якщо не хочете змінювати пароль"
         new_password_confirmation: "Підтвердження нового паролю:"
@@ -74,9 +75,3 @@ uk:
         title: "Забули пароль?"
         email: "Email на який зареєстровано профіль:"
         submit: "Надіслати мені іструкції для скидання паролю"
-      edit:
-        title: "Змінити мій пароль"
-        new_password: "Новий пароль:"
-        new_password_confirmation: "Підтвердження нового паролю:"
-        characters_min: "символів мінімум"
-        submit: "Змінити"
