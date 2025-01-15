@@ -3,3 +3,6 @@ import "@hotwired/turbo-rails"
 Turbo.session.drive = false
 import "./controllers"
 import "./custom/alpine-min"
+import "activestorage"
+import "trix"
+import "@rails/actiontext"

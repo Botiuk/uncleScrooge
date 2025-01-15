@@ -40,7 +40,9 @@ gem 'kamal', '2.4.0', require: false
 gem 'thruster', '0.1.10', require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+gem 'image_processing', '1.13.0'
+# Client library for easily using the Cloudinary service
+gem 'cloudinary', '2.2.0'
 
 # A set of common locale data and translations to internationalize and/or localize your Rails applications
 gem 'rails-i18n', '8.0.1'
@@ -51,6 +53,12 @@ gem 'devise', '4.9.4'
 gem 'devise-i18n', '1.12.1'
 # Simple authorization solution for Rails
 gem 'cancancan', '3.6.1'
+
+# Allows the records of a ActiveRecord model to be organized in a tree structure
+gem 'ancestry', '4.3.3'
+
+# Agnostic pagination in plain ruby
+gem 'pagy', '9.3.3'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

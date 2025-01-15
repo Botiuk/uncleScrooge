@@ -9,3 +9,8 @@ Layout/LineLength:
 Metrics/MethodLength:
   Exclude:
     - 'db/migrate/20250108052319_devise_create_users.rb'
+    - 'db/migrate/20250114103232_create_active_storage_tables.active_storage.rb'
+
+Metrics/AbcSize:
+  Exclude:
+    - 'db/migrate/20250114103232_create_active_storage_tables.active_storage.rb'
