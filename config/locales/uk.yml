@@ -10,6 +10,15 @@ uk:
         many: "%{count} помилок не дають зберегти цей запис:"
         other: "%{count} помилка:"
 
+  activerecord:
+    attributes:
+      category:
+        name: "Поле 'Назва категорії'"
+
+  validation:
+    ancestry:
+      uniq: "має містити унікальні назву. Така підкатегорія в даній категорії вже є"
+
   alert:
     cancan_access_denied: "Ви не маєте прав для доступу до цієї сторінки"
 
