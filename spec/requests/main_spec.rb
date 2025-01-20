@@ -8,5 +8,10 @@ require 'rails_helper'
 #         get main_index_path
 #         expect(response).to be_successful
 #       end
+
+#       it 'can GET contacts' do
+#         get contacts_path
+#         expect(response).to be_successful
+#       end
 #     end
 # end

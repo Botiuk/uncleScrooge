@@ -4,7 +4,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    can :read, :main
+    can %i[read contacts], :main
 
     # return if user.blank?
     #   can :read, :all

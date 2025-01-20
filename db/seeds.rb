@@ -18,9 +18,9 @@ when 'development'
     password_confirmation: ENV.fetch('SEEDS_PASS', nil)
   )
 
-  3.times do
+  ['Монети', 'Набори монет', 'Аксесуари'].each do |category_name|
     Category.create(
-      name: Faker::Space.planet
+      name: category_name
     )
   end
   root_categories_ids = Category.where(ancestry: nil).ids

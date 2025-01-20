@@ -17,7 +17,7 @@ uk:
 
   validation:
     ancestry:
-      uniq: "має містити унікальні назву. Така підкатегорія в даній категорії вже є"
+      uniq: "має бути унікальна. Така підкатегорія в даній категорії вже є"
 
   alert:
     cancan_access_denied: "Ви не маєте прав для доступу до цієї сторінки"
@@ -29,15 +29,14 @@ uk:
     apply: "Застосувати"
 
   navbar:
-    coins: "Монети"
-    coins_set: "Набори монет"
-    accessories: "Аксесуари"
     contacts: "Контакти"
     profile: "Мій профіль"
 
   main:
     index:
       welcome_html: "Вітаємо у нумізматичному магазині &quot;дядько Скрудж&quot;!"
+    contacts: 
+      title: "Наші контакти"
 
   shared:
     cart_open:
