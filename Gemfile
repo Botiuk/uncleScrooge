@@ -86,7 +86,7 @@ group :development do
   # A collection of RuboCop cops to check for performance optimizations in Ruby code.
   gem 'rubocop-performance', '1.23.1', require: false
   # Code style checking for RSpec files
-  gem 'rubocop-rspec', '3.3.0', require: false
+  gem 'rubocop-rspec', '3.4.0', require: false
   gem 'rubocop-rspec_rails', '2.30.0', require: false
   # Code style checking for factory_bot files
   gem 'rubocop-factory_bot', '2.26.1', require: false
