@@ -19,18 +19,36 @@ uk:
     ancestry:
       uniq: "має бути унікальна. Така підкатегорія в даній категорії вже є"
 
+  notice:
+    create:
+      category: "Категорія успішно додана"
+    update:
+      category: "Категорія успішно оновлена"
+    destroy:
+      category: "Категорія успішно видалена"
+
   alert:
     cancan_access_denied: "Ви не маєте прав для доступу до цієї сторінки"
+    destroy:
+      category: "Неможливо видалити категорію, що містить підкатегорії"
 
   button:
     back: "Назад"
     search: "Пошук"
     сheckout: "Оплата"
     apply: "Застосувати"
+    submit: "Підтвердити"
+    add:
+      category: "Додати кореневу категорію"
+      category_children: "Додати підкатегорію"
+    edit: "Редагувати"
+    delete: "Видалити"
+    delete_confirm: "Точно видалити?"
 
   navbar:
     contacts: "Контакти"
     profile: "Мій профіль"
+    categories: "Категорії товарів"
 
   main:
     index:
@@ -83,3 +101,18 @@ uk:
         title: "Забули пароль?"
         email: "Email на який зареєстровано профіль:"
         submit: "Надіслати мені іструкції для скидання паролю"
+
+  categories:
+    index: 
+      title: "Категорії товарів"
+    new:
+      title: "Нова категорія"
+    form:
+      name: "Назва категорії:"
+      avatar: "Логотип категорії:"
+      description: "Опис категорії:"
+      placeholder:
+        name: "Введіть назву категорії"
+        description: "Введіть опис категорії (можна залишити пустим)"
+    edit:
+      title: "Редагувати категорію"

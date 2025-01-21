@@ -1,0 +1,33 @@
+<% if can? :create, Category %>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+<% else %>
+    <div class="grid grid-cols-1 mb-3">
+<% end %>
+        <div class="text-start text-xl font-semibold leading-none">
+            <% @category.ancestors.each do |category| %>
+                <%= link_to category.name, category_path(category) %> &gt;
+            <% end %>
+            <%= link_to @category.name, category_path(@category) %> &gt;
+        </div>
+        <% if can? :create, Category %>
+            <div class="text-end my-auto">
+                <%= link_to t('button.add.category_children'), new_category_path(parent_id: @category.id), method: :post, class: "cursor-pointer bg-gray-300 hover:bg-gray-400 px-3 py-1 font-medium hover:text-gray-800 rounded-full shadow" %>
+            </div>
+        <% end %>
+    </div>
+
+<% if @category.has_children? %>
+    <div class="grid grid-cols-2 lg:grid-cols-5 md:grid-cols-3 gap-3">
+        <% @category.children.each do |category_children| %>
+            <%= render 'categories/category', category: category_children %>
+        <% end %>
+    </div>
+<% end %>
+
+<% if @category.description.present? %>
+    <div class="grid grid-cols-1 mb-2 mt-2 py-2">
+        <div class="text-justify indent-4">
+            <%= @category.description %>
+        </div>
+    </div>
+<% end %>

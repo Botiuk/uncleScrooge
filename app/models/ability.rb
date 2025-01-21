@@ -5,10 +5,12 @@ class Ability
 
   def initialize(user)
     can %i[read contacts], :main
+    can :read, Category
 
-    # return if user.blank?
+    return if user.blank?
     #   can :read, :all
-    # return unless user.admin?
-    #   can :manage, :all
+    return unless user.admin?
+
+    can :manage, Category
   end
 end

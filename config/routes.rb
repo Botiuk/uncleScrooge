@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'main#index'
   get 'contacts', to: 'main#contacts'
+
+  resources :categories
 end

@@ -2,10 +2,10 @@
 
 require 'rails_helper'
 
-# RSpec.describe 'Mains' do
+# RSpec.describe 'Main' do
 #     describe 'non registered user management' do
 #       it 'can GET index' do
-#         get main_index_path
+#         get root_path
 #         expect(response).to be_successful
 #       end
 

@@ -7,8 +7,13 @@ class ApplicationController < ActionController::Base
   allow_browser versions: :modern
 
   before_action :authenticate_user!
+  before_action :find_root_categories
 
   rescue_from CanCan::AccessDenied do |_exception|
     redirect_to root_url, alert: t('alert.cancan_access_denied')
+  end
+
+  def find_root_categories
+    @navbar_root_categories = Category.where(ancestry: nil)
   end
 end

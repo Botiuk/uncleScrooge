@@ -1,0 +1,39 @@
+<%= form_with(model: category) do |form| %>
+    <form class="w-full max-w-lg">
+        <%= render 'shared/form_errors_messages', object: form.object %>
+
+        <div class="flex flex-wrap -mx-3">
+            <div class="w-full px-3">
+                <%= form.label :name, t('.name'), class: "block tracking-wide font-semibold mb-2" %>
+                <%= form.text_field :name, placeholder: t('.placeholder.name'), autofocus: true, class: "appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-200 focus:border-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" %>
+            </div>
+        </div>
+
+        <div>
+            <%= form.hidden_field :parent_id %>
+        </div>
+
+        <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full px-3">
+                <%= form.label :avatar, t('.avatar'), class: "block tracking-wide font-semibold mb-2" %>
+                <% if category.avatar.present? %>
+                    <img class="w-40 my-2" src="<%= cloudinary_url(category.avatar.key, height: 200, crop: :scale) %>" style="width:20%;">
+                <% end %>
+                <%= form.file_field :avatar, direct_upload: true, class: "appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-200 focus:border-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" %>
+            </div>
+        </div>
+
+        <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full px-3">
+                <%= form.label :description, t('.description'), class: "block tracking-wide font-semibold mb-2" %>
+                <%= form.rich_text_area :description, placeholder: t('.placeholder.description'), class: "appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-200 focus:border-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" %>
+            </div>
+        </div>
+
+        <div class="flex items-center justify-between py-2">
+            <%= form.button nil, class: "cursor-pointer bg-gray-300 hover:bg-gray-400 px-3 py-1 font-medium hover:text-gray-800 rounded-full shadow" do %>
+                <%= t('button.submit') %>
+            <% end %>
+        </div>
+    </form>
+<% end %>
