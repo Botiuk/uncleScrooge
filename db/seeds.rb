@@ -72,6 +72,36 @@ when 'development'
     checksum: 'HVeUIKL7pKN4HZqZPHjmig=='
   )
 
+  root_coin_category = Category.where(ancestry: nil, name: 'Монети').first
+  last_childrens_ids = root_coin_category.indirect_ids
+  nominal = [1, 2, 5, 10, 20, 50, 100]
+  last_childrens_ids.each do |last_children_id|
+    rand(1..8).times do
+      year = Faker::Date.between(from: 200.years.ago, to: Time.zone.today).year
+      Product.create(
+        name: "#{nominal.sample} #{Faker::Coin.name} #{year}",
+        price: Faker::Commerce.price,
+        category_id: last_children_id
+      )
+    end
+  end
+
+  product_ids = Product.ids
+  product_ids.each do |product_id|
+    ActiveStorage::Attachment.create!(
+      record_type: 'Product',
+      record_id: product_id,
+      name: 'photos',
+      blob_id: 2
+    )
+    ActionText::RichText.create!(
+      record_type: 'Product',
+      record_id: product_id,
+      name: 'description',
+      body: Faker::Quote.yoda
+    )
+  end
+
 when 'production'
 
   user = User.where(email: 'svetabotiuk@gmail.com').first_or_initialize
