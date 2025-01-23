@@ -193,7 +193,7 @@ GEM
       net-protocol
     net-protocol (0.2.2)
       timeout
-    net-scp (4.0.0)
+    net-scp (4.1.0)
       net-ssh (>= 2.6.5, < 8.0.0)
     net-sftp (4.0.0)
       net-ssh (>= 5.0.0, < 8.0.0)
@@ -302,7 +302,7 @@ GEM
       rspec-mocks (~> 3.13)
       rspec-support (~> 3.13)
     rspec-support (3.13.2)
-    rubocop (1.70.0)
+    rubocop (1.71.0)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
       parallel (~> 1.10)
@@ -419,7 +419,7 @@ DEPENDENCIES
   rails (= 8.0.1)
   rails-i18n (= 8.0.1)
   rspec-rails (= 7.1.0)
-  rubocop (= 1.70.0)
+  rubocop (= 1.71.0)
   rubocop-factory_bot (= 2.26.1)
   rubocop-performance (= 1.23.1)
   rubocop-rails (= 2.29.0)

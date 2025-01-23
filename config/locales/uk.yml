@@ -25,8 +25,10 @@ uk:
   notice:
     create:
       category: "Категорія успішно додана"
+      product: "Товар успішно додано"
     update:
       category: "Категорія успішно оновлена"
+      product: "Товар успішно оновлено"
     destroy:
       category: "Категорія успішно видалена"
 
@@ -44,6 +46,7 @@ uk:
     add:
       category: "Додати кореневу категорію"
       category_children: "Додати підкатегорію"
+      product: "Додати товар"
     edit: "Редагувати"
     delete: "Видалити"
     delete_confirm: "Точно видалити?"
@@ -52,6 +55,7 @@ uk:
     contacts: "Контакти"
     profile: "Мій профіль"
     categories: "Категорії товарів"
+    products: "Товари"
 
   main:
     index:
@@ -119,3 +123,25 @@ uk:
         description: "Введіть опис категорії (можна залишити пустим)"
     edit:
       title: "Редагувати категорію"
+
+  products:
+    index:
+      title: "Товари"
+    new:
+      title: "Новий товар"
+    form:
+      name: "Назва товару:"
+      price: "Ціна товару, грн:"
+      photos: "Фотографії товару:"
+      delete_photo: "Видалити"
+      description: "Опис товару:"
+      category_id: "Категорія товару:"
+      placeholder:
+        name: "Введіть назву товару"
+        description: "Введіть опис товару (можна залишити пустим)"
+      prompt:
+        category: "-- виберіть категорію --"
+    edit:
+      title: "Редагувати товар"
+    show:
+      price: "Ціна:"

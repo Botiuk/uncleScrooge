@@ -71,12 +71,21 @@ when 'development'
     byte_size: 70_858,
     checksum: 'HVeUIKL7pKN4HZqZPHjmig=='
   )
+  ActiveStorage::Blob.create!(
+    key: 'aljfox6cbhtgiphmw8k8ao3n6rix',
+    filename: 'avers.jpg',
+    content_type: 'image/jpeg',
+    metadata: '{"identified":true,"width":198,"height":198,"analyzed":true}',
+    service_name: 'cloudinary',
+    byte_size: 72_935,
+    checksum: 'QlDJbDTcZjd+aS4Ne6B+Rw=='
+  )
 
   root_coin_category = Category.where(ancestry: nil, name: 'Монети').first
   last_childrens_ids = root_coin_category.indirect_ids
   nominal = [1, 2, 5, 10, 20, 50, 100]
   last_childrens_ids.each do |last_children_id|
-    rand(1..8).times do
+    rand(3..8).times do
       year = Faker::Date.between(from: 200.years.ago, to: Time.zone.today).year
       Product.create(
         name: "#{nominal.sample} #{Faker::Coin.name} #{year}",
@@ -87,13 +96,16 @@ when 'development'
   end
 
   product_ids = Product.ids
+  coins_blobs = [2, 3]
   product_ids.each do |product_id|
-    ActiveStorage::Attachment.create!(
-      record_type: 'Product',
-      record_id: product_id,
-      name: 'photos',
-      blob_id: 2
-    )
+    coins_blobs.each do |coin_blob|
+      ActiveStorage::Attachment.create!(
+        record_type: 'Product',
+        record_id: product_id,
+        name: 'photos',
+        blob_id: coin_blob
+      )
+    end
     ActionText::RichText.create!(
       record_type: 'Product',
       record_id: product_id,

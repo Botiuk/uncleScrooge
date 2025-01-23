@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   get 'contacts', to: 'main#contacts'
 
   resources :categories
+  resources :products, except: :destroy
 end

@@ -1,0 +1,44 @@
+<% if can? :update, Product %>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+<% else %>
+    <div class="grid grid-cols-1 mb-3">
+<% end %>
+        <div class="text-start text-xl font-semibold leading-none">
+            <%= @product.name %>
+        </div>
+        <% if can? :update, Product %>
+            <div class="text-end my-auto">
+                <%= link_to t('button.edit'), edit_product_path(@product), class: "cursor-pointer bg-gray-300 hover:bg-gray-400 px-3 py-1 font-medium hover:text-gray-800 rounded-full shadow" %>
+            </div>
+        <% end %>
+    </div>
+
+<div class="grid grid-cols-1 mb-3">
+    <div class="text-start leading-none">
+        <% @category.ancestors.each do |category| %>
+            <%= link_to category.name, category_path(category) %> &gt;
+        <% end %>
+        <%= link_to @category.name, category_path(@category) %>
+    </div>
+</div>
+
+<div class="grid grid-cols-2 lg:grid-cols-6 md:grid-cols-4 gap-3">
+    <% if @product.photos.attached? %>
+        <% @product.photos.each do |photo| %>
+            <div>
+                <img class="p-4" src="<%= cloudinary_url(photo.key, height: 200, crop: :scale) %>" style="width:100%;">
+            </div>
+        <% end %>
+    <% end %>
+    <div class="text-center leading-tight">
+        <%= t('.price') %> <%= number_to_currency(@product.price) %>
+    </div>
+</div>
+
+<% if @product.description.present? %>
+    <div class="grid grid-cols-1 mb-2 mt-2 py-2">
+        <div class="text-justify indent-4">
+            <%= @product.description %>
+        </div>
+    </div>
+<% end %>

@@ -1,0 +1,56 @@
+<%= form_with(model: product) do |form| %>
+    <form class="w-full max-w-lg">
+        <%= render 'shared/form_errors_messages', object: form.object %>
+
+        <div class="flex flex-wrap -mx-3">
+            <div class="w-full px-3">
+                <%= form.label :name, t('.name'), class: "block tracking-wide font-semibold mb-2" %>
+                <%= form.text_field :name, placeholder: t('.placeholder.name'), autofocus: true, class: "appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-200 focus:border-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" %>
+            </div>
+        </div>
+
+        <div class="flex flex-wrap -mx-3">
+            <div class="w-full md:w-1/2 px-3">
+                <%= form.label :price, t('.price'), class: "block tracking-wide font-semibold mb-2" %>
+                <%= form.number_field :price, min: 0.00, step: 0.01, class: "appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-200 focus:border-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" %>
+            </div>
+
+            <div class="w-full md:w-1/2 px-3">
+                <%= form.label :category_id, t('.category_id'), class: "block tracking-wide font-semibold mb-2" %>
+                <%= select(:product, :category_id, options_for_select(@categories, selected: form.object.category_id), {prompt: t('.prompt.category')}, {class: "appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-200 focus:border-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"}) %>
+            </div>
+        </div>
+
+        <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full px-3">
+                <%= form.label :photos, t('.photos'), class: "block tracking-wide font-semibold mb-2" %>
+                <% if @product.photos.attached? %>
+                    <div class="grid grid-cols-4 lg:grid-cols-12 md:grid-cols-8 gap-3">
+                        <% @product.photos.each do |photo| %>
+                            <div class="mb-2">
+                                <%= form.hidden_field :photos, multiple: true, value: photo.signed_id %>
+                                <%= cl_image_tag(photo.key, width: 100, crop: :scale) %>
+                                <%= check_box_tag "deleted_photo_ids[]", photo.id, class: "cursor-pointer w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2" %>
+                                <%= t('.delete_photo') %>
+                            </div>
+                        <% end %>
+                    </div>
+                <% end %>
+                <%= form.file_field :photos, direct_upload: true, multiple: true, class: "appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-200 focus:border-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" %>
+            </div>
+        </div>
+
+        <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full px-3">
+                <%= form.label :description, t('.description'), class: "block tracking-wide font-semibold mb-2" %>
+                <%= form.rich_text_area :description, placeholder: t('.placeholder.description'), class: "appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-200 focus:border-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" %>
+            </div>
+        </div>
+
+        <div class="flex items-center justify-between py-2">
+            <%= form.button nil, class: "cursor-pointer bg-gray-300 hover:bg-gray-400 px-3 py-1 font-medium hover:text-gray-800 rounded-full shadow" do %>
+                <%= t('button.submit') %>
+            <% end %>
+        </div>
+    </form>
+<% end %>
