@@ -1,0 +1,14 @@
+<ul class="ps-3">
+    <% categories.each do |category| %>
+        <li>
+            <% if @category.id == category.id %>
+                <div class="font-semibold"><%= category.name %></div>
+            <% else %>
+                <%= link_to category.name, shop_path(id: category.id) %>
+            <% end %>
+        </li>
+        <% if category.has_children? %>
+            <%= render 'shared/left_shop_bar', categories: category.children %>
+        <% end %>
+    <% end %>
+</ul>

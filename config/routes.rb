@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'main#index'
   get 'contacts', to: 'main#contacts'
+  get 'shop', to: 'categories#shop'
 
   resources :categories
   resources :products, except: :destroy

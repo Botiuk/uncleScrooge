@@ -16,9 +16,9 @@
 <div class="grid grid-cols-1 mb-3">
     <div class="text-start leading-none">
         <% @category.ancestors.each do |category| %>
-            <%= link_to category.name, category_path(category) %> &gt;
+            <%= link_to category.name, shop_path(id: category.id) %> &gt;
         <% end %>
-        <%= link_to @category.name, category_path(@category) %>
+        <%= link_to @category.name, shop_path(id: @category.id) %>
     </div>
 </div>
 

@@ -23,9 +23,16 @@ require 'rails_helper'
 #       expect(flash[:alert]).to include I18n.t('devise.failure.unauthenticated')
 #     end
 
-#     it 'can GET show' do
+#     it 'cannot GET show' do
 #       category = create(:category)
 #       get category_path(category)
+#       expect(response).to redirect_to(new_user_session_path)
+#       expect(flash[:alert]).to include I18n.t('devise.failure.unauthenticated')
+#     end
+
+#     it 'can GET shop' do
+#       category = create(:category)
+#       get shop_path(id: category.id)
 #       expect(response).to be_successful
 #     end
 #   end
@@ -37,7 +44,7 @@ require 'rails_helper'
 #       login_as(test_user, scope: :user)
 #     end
 
-#     it 'cannot GET index and redirects to root page' do
+#     it 'cannot GET index' do
 #       get categories_path
 #       expect(response).to redirect_to(root_path)
 #       expect(flash[:alert]).to include I18n.t('alert.cancan_access_denied')
@@ -56,9 +63,16 @@ require 'rails_helper'
 #       expect(flash[:alert]).to include I18n.t('alert.cancan_access_denied')
 #     end
 
-#     it 'can GET show' do
+#     it 'cannot GET show' do
 #       category = create(:category)
 #       get category_path(category)
+#       expect(response).to redirect_to(root_path)
+#       expect(flash[:alert]).to include I18n.t('alert.cancan_access_denied')
+#     end
+
+#     it 'can GET shop' do
+#       category = create(:category)
+#       get shop_path(id: category.id)
 #       expect(response).to be_successful
 #     end
 #   end
@@ -114,6 +128,12 @@ require 'rails_helper'
 #       delete category_path(category_root)
 #       expect(response).to redirect_to(category_url(category_root))
 #       expect(flash[:alert]).to include I18n.t('alert.destroy.category')
+#     end
+
+#     it 'can GET shop' do
+#       category = create(:category)
+#       get shop_path(id: category.id)
+#       expect(response).to be_successful
 #     end
 #   end
 # end

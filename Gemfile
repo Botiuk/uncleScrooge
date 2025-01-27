@@ -26,7 +26,7 @@ gem 'bcrypt', '3.1.20'
 gem 'tzinfo-data', '1.2024.2', platforms: %i[windows jruby]
 
 # Use the database-backed adapters for Rails.cache, Active Job, and Action Cable
-gem 'solid_cable', '3.0.5'
+gem 'solid_cable', '3.0.7'
 gem 'solid_cache', '1.0.6'
 gem 'solid_queue', '1.1.2'
 
@@ -82,7 +82,7 @@ group :development do
   # RuboCop is a Ruby code style checking and code formatting tool.
   gem 'rubocop', '1.71.0', require: false
   # Automatic Rails code style checking tool.
-  gem 'rubocop-rails', '2.29.0', require: false
+  gem 'rubocop-rails', '2.29.1', require: false
   # A collection of RuboCop cops to check for performance optimizations in Ruby code.
   gem 'rubocop-performance', '1.23.1', require: false
   # Code style checking for RSpec files

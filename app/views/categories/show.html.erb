@@ -7,7 +7,7 @@
             <% @category.ancestors.each do |category| %>
                 <%= link_to category.name, category_path(category) %> &gt;
             <% end %>
-            <%= link_to @category.name, category_path(@category) %> &gt;
+            <%= link_to @category.name, category_path(@category) %>
         </div>
         <% if can? :create, Category %>
             <div class="text-end my-auto">

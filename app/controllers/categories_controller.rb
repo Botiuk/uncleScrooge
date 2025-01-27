@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class CategoriesController < ApplicationController
-  skip_before_action :authenticate_user!, only: :show
-  before_action :set_category, only: %i[edit update show destroy]
+  skip_before_action :authenticate_user!, only: :shop
+  before_action :set_category, only: %i[edit update show destroy shop]
   authorize_resource
 
   def index
@@ -41,6 +41,11 @@ class CategoriesController < ApplicationController
       @category.destroy
       redirect_to categories_url, notice: t('notice.destroy.category')
     end
+  end
+
+  def shop
+    @pagy, @products = pagy(Product.where(category_id: @category.descendant_ids)
+                                   .or(Product.where(category_id: @category.id)).order(:price), limit: 20)
   end
 
   private
