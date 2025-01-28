@@ -28,6 +28,17 @@ require 'rails_helper'
 #       get product_path(product)
 #       expect(response).to be_successful
 #     end
+
+#     it 'GET search' do
+#       get search_path(product_name: '1 dollar')
+#       expect(response).to be_successful
+#     end
+
+#     it 'GET search with empty params product_name' do
+#       get search_path
+#       expect(response).to redirect_to(root_path)
+#       expect(flash[:alert]).to include(I18n.t('alert.search.product'))
+#     end
 #   end
 
 #   describe 'registered user management' do
@@ -59,6 +70,17 @@ require 'rails_helper'
 #       product = create(:product)
 #       get product_path(product)
 #       expect(response).to be_successful
+#     end
+
+#     it 'GET search' do
+#       get search_path(product_name: '1 dollar')
+#       expect(response).to be_successful
+#     end
+
+#     it 'GET search with empty params product_name' do
+#       get search_path
+#       expect(response).to redirect_to(root_path)
+#       expect(flash[:alert]).to include(I18n.t('alert.search.product'))
 #     end
 #   end
 
@@ -98,6 +120,23 @@ require 'rails_helper'
 #       expect(product.reload.name).to eq('5 euro 2000')
 #       expect(response).to redirect_to(product_url(product))
 #       expect(flash[:notice]).to include(I18n.t('notice.update.product'))
+#     end
+
+#     it 'can GET show' do
+#       product = create(:product)
+#       get product_path(product)
+#       expect(response).to be_successful
+#     end
+
+#     it 'GET search' do
+#       get search_path(product_name: '1 dollar')
+#       expect(response).to be_successful
+#     end
+
+#     it 'GET search with empty params product_name' do
+#       get search_path
+#       expect(response).to redirect_to(root_path)
+#       expect(flash[:alert]).to include(I18n.t('alert.search.product'))
 #     end
 #   end
 # end

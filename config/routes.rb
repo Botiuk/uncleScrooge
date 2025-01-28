@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   root 'main#index'
   get 'contacts', to: 'main#contacts'
   get 'shop', to: 'categories#shop'
+  get 'search', to: 'products#search'
 
   resources :categories
   resources :products, except: :destroy

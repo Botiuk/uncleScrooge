@@ -1,0 +1,17 @@
+<div class="grid grid-cols-1 mb-3">
+    <div class="text-start text-xl font-semibold leading-none">
+        <%= t('.title') %> "<%= @search_param %>"
+    </div>
+</div>
+
+<% if @products.present? %>
+    <div class="grid grid-cols-2 lg:grid-cols-6 md:grid-cols-4 gap-3">
+        <% @products.each do |product| %>
+            <%= render product %>
+        <% end %>
+    </div>
+<% else %>
+    <%= t('.search_empty') %>
+<% end %>
+
+<%= render 'shared/pagy' %>

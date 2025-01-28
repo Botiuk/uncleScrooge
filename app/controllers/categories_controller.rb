@@ -20,7 +20,7 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
-      redirect_to category_url(@category), notice: t('notice.create.category')
+      redirect_to category_path(@category), notice: t('notice.create.category')
     else
       render :new, status: :unprocessable_entity
     end
@@ -28,7 +28,7 @@ class CategoriesController < ApplicationController
 
   def update
     if @category.update(category_params)
-      redirect_to category_url(@category), notice: t('notice.update.category')
+      redirect_to category_path(@category), notice: t('notice.update.category')
     else
       render :edit, status: :unprocessable_entity
     end
@@ -36,7 +36,7 @@ class CategoriesController < ApplicationController
 
   def destroy
     if @category.has_children?
-      redirect_to category_url(@category), alert: t('alert.destroy.category'), status: :unprocessable_entity
+      redirect_to category_path(@category), alert: t('alert.destroy.category'), status: :unprocessable_entity
     else
       @category.destroy
       redirect_to categories_url, notice: t('notice.destroy.category')
@@ -46,6 +46,8 @@ class CategoriesController < ApplicationController
   def shop
     @pagy, @products = pagy(Product.where(category_id: @category.descendant_ids)
                                    .or(Product.where(category_id: @category.id)).order(:price), limit: 20)
+  rescue Pagy::OverflowError
+    redirect_to root_path
   end
 
   private

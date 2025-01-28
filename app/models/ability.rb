@@ -6,7 +6,7 @@ class Ability
   def initialize(user)
     can %i[read contacts], :main
     can :shop, Category
-    can :read, Product
+    can %i[show search], Product
 
     return if user.blank?
     #   can :read, :all
