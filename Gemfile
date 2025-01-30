@@ -9,7 +9,7 @@ gem 'propshaft', '1.1.0'
 # Use postgresql as the database for Active Record
 gem 'pg', '1.5.9'
 # Use the Puma web server [https://github.com/puma/puma]
-gem 'puma', '6.5.0'
+gem 'puma', '6.6.0'
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
 gem 'jsbundling-rails', '1.3.1'
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
@@ -28,7 +28,7 @@ gem 'tzinfo-data', '1.2024.2', platforms: %i[windows jruby]
 # Use the database-backed adapters for Rails.cache, Active Job, and Action Cable
 gem 'solid_cable', '3.0.7'
 gem 'solid_cache', '1.0.6'
-gem 'solid_queue', '1.1.2'
+gem 'solid_queue', '1.1.3'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '1.18.4', require: false

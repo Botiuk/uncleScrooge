@@ -112,6 +112,11 @@ when 'development'
       name: 'description',
       body: Faker::Quote.yoda
     )
+    Storehouse.create(
+      operation_type: 'input',
+      product_id: product_id,
+      quantity: Faker::Number.between(from: 1, to: 30)
+    )
   end
 
 when 'production'
