@@ -49,6 +49,9 @@
                     <% if can? :manage, Product %>
                         <%= link_to t('navbar.products'), products_path, class: "mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0"%>
                     <% end %>
+                    <% if can? :show, Storehouse %>
+                        <%= link_to t('navbar.storehouse'), storehouses_path, class: "mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0"%>
+                    <% end %>
                 <% end %>
             </div>
         </nav>

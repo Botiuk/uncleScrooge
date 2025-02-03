@@ -2,6 +2,11 @@ uk:
   appname: "дядько Скрудж"
   author: "Svitlana Botiuk"
 
+  time:
+    formats:
+      default: "%H:%M"
+      long: "%H:%M, %e.%m.%Y"
+
   forms:
     messages:
       errors:
@@ -17,7 +22,15 @@ uk:
       product:
         name: "Назва товару"
         price: "Ціна"
-
+        category: "Категорія"
+      storehouse:
+        quantity: "Кількість"
+        product: "Товар"
+        operation_type: "Тип операції"
+        operation_types:
+          input: "внесення"
+          cart: "кошик"
+          paided: "оплачено"
   validation:
     ancestry:
       uniq: "має бути унікальна. Така підкатегорія в даній категорії вже є"
@@ -26,11 +39,14 @@ uk:
     create:
       category: "Категорія успішно додана"
       product: "Товар успішно додано"
+      storehouse: "Товар успішно додано на склад"
     update:
       category: "Категорія успішно оновлена"
       product: "Товар успішно оновлено"
+      storehouse: "Товар на складі успішно оновлено"
     destroy:
       category: "Категорія успішно видалена"
+      storehouse: "Товар зі складу успішно видалено"
 
   alert:
     cancan_access_denied: "Ви не маєте прав для доступу до цієї сторінки"
@@ -45,10 +61,12 @@ uk:
     сheckout: "Оплата"
     apply: "Застосувати"
     submit: "Підтвердити"
+    show: "Детальніше"
     add:
       category: "Додати кореневу категорію"
       category_children: "Додати підкатегорію"
       product: "Додати товар"
+      storehouse: "Додати на склад"
     edit: "Редагувати"
     delete: "Видалити"
     delete_confirm: "Точно видалити?"
@@ -58,6 +76,7 @@ uk:
     profile: "Мій профіль"
     categories: "Категорії товарів"
     products: "Товари"
+    storehouse: "Склад"
 
   main:
     index:
@@ -152,3 +171,18 @@ uk:
     search:
       title: "Результати пошуку товарів за назвою, що містить"
       search_empty: "Товари, що відповідають запиту, не знайдено"
+
+  storehouses:
+    index:
+      title: "Склад"
+    new:
+      title: "Новий товар на складі"
+    form:
+      quantity: "Кількість товару, шт.:"
+      product_id: "Товар:"
+      prompt:
+        product: "-- виберіть товар --"
+    edit:
+      title: "Редагувати товар на складі"
+    search:
+      title: "Результати пошуку операцій по складу для товару"

@@ -17,7 +17,9 @@ Rails.application.routes.draw do
   get 'contacts', to: 'main#contacts'
   get 'shop', to: 'categories#shop'
   get 'search', to: 'products#search'
+  get 'storehouses/search', to: 'storehouses#search'
 
   resources :categories
   resources :products, except: :destroy
+  resources :storehouses, except: :show
 end

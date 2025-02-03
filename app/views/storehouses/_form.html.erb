@@ -1,0 +1,25 @@
+<%= form_with(model: storehouse) do |form| %>
+    <form class="w-full max-w-lg">
+        <%= render 'shared/form_errors_messages', object: form.object %>
+
+        <%= form.hidden_field :operation_type, value: "input" %>
+
+        <div class="flex flex-wrap -mx-3">
+            <div class="w-full md:w-1/2 px-3">
+                <%= form.label :product_id, t('.product_id'), class: "block tracking-wide font-semibold mb-2" %>
+                <%= select(:storehouse, :product_id, options_for_select(@products, selected: form.object.product_id), {prompt: t('.prompt.product')}, {class: "appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-200 focus:border-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"}) %>
+            </div>
+
+            <div class="w-full md:w-1/2 px-3">
+                <%= form.label :quantity, t('.quantity'), class: "block tracking-wide font-semibold mb-2" %>
+                <%= form.number_field :quantity, min: 1, step: 1, class: "appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-200 focus:border-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" %>
+            </div>
+        </div>
+
+        <div class="flex items-center justify-between py-2">
+            <%= form.button nil, class: "cursor-pointer bg-gray-300 hover:bg-gray-400 px-3 py-1 font-medium hover:text-gray-800 rounded-full shadow" do %>
+                <%= t('button.submit') %>
+            <% end %>
+        </div>
+    </form>
+<% end %>

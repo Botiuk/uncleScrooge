@@ -15,5 +15,9 @@ class Ability
     can :manage, Category
     can :manage, Product
     cannot :destroy, Product
+    can %i[index create search], Storehouse
+    can %i[update destroy], Storehouse do |storehouse|
+      storehouse.operation_type == 'input'
+    end
   end
 end

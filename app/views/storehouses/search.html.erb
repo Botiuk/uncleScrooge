@@ -1,0 +1,17 @@
+<div class="grid grid-cols-1 mb-3">
+    <div class="text-start text-xl font-semibold leading-none">
+        <%= t('.title') %> "<%= @product.name %>"
+    </div>
+</div>
+
+<div class="py-4 overflow-x-auto" data-turbo="true">
+    <table class="w-full text-sm text-left rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
+        <tbody>
+            <% @storehouses.each do |storehouse| %>
+                <%= render storehouse %>
+            <% end %>
+        </tbody>
+    </table>
+</div>
+
+<%= render 'shared/pagy' %>

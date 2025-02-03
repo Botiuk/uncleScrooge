@@ -1,0 +1,24 @@
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+    <div class="text-start text-xl font-semibold leading-none">
+        <%= t('.title') %>
+    </div>
+    <% if can? :create, Storehouse %>
+        <div class="text-end my-auto">
+            <%= link_to t('button.add.storehouse'), new_storehouse_path, method: :post, class: "cursor-pointer bg-gray-300 hover:bg-gray-400 px-3 py-1 font-medium hover:text-gray-800 rounded-full shadow" %>
+        </div>
+    <% end %>
+</div>
+
+<% if @storehouses.present? %>
+    <div class="py-4 overflow-x-auto" data-turbo="true">
+        <table class="w-full text-sm text-left rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
+            <tbody>
+                <% @storehouses.each do |storehouse| %>
+                    <%= render storehouse %>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+<% end %>
+
+<%= render 'shared/pagy' %>

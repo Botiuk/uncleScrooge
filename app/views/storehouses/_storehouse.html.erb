@@ -1,0 +1,27 @@
+<tr id="<%= dom_id storehouse %>" class="odd:bg-white even:bg-gray-100 border  text-center">
+    <td class="p-3 text-start">
+        <%= storehouse.product.name %>
+    </td>
+    <td class="p-3">
+        <%= storehouse.quantity %>
+    </td>
+    <td class="p-3">
+        <%= Storehouse.human_enum_name(:operation_type, storehouse.operation_type) %>
+    </td>
+    <td class="p-3">
+        <%= I18n.l(storehouse.created_at, format: :long) %>
+    </td>
+    <td class="p-3">
+        <%= link_to t('button.search'), storehouses_search_path(product_id: storehouse.product_id), class: "cursor-pointer bg-gray-300 hover:bg-gray-400 px-3 py-1 font-medium hover:text-gray-800 rounded-full shadow" %>
+    </td>
+    <td class="p-3">
+        <% if can? :update, storehouse %>
+            <%= link_to t('button.edit'), edit_storehouse_path(storehouse), class: "cursor-pointer bg-gray-300 hover:bg-gray-400 px-3 py-1 font-medium hover:text-gray-800 rounded-full shadow" %>
+        <% end %>
+    </td>
+    <td class="p-3">
+        <% if can? :destroy, storehouse %>
+            <%= button_to t('button.delete'), storehouse, method: :delete, data: { turbo_confirm: t('button.delete_confirm') }, class: "cursor-pointer bg-gray-300 hover:bg-gray-400 px-3 py-1 font-medium hover:text-gray-800 rounded-full shadow", form: {style: 'display:inline-block;'} %>
+        <% end %>
+    </td>
+</tr>
