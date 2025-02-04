@@ -7,4 +7,8 @@ class Storehouse < ApplicationRecord
 
   validates :operation_type, :quantity, presence: true
   validates :quantity, numericality: { only_integer: true, greater_than: 0 }
+
+  def self.count_product_by_operation_type(product_id, operation_type)
+    Storehouse.where(product_id: product_id, operation_type: operation_type).sum(:quantity)
+  end
 end

@@ -4,7 +4,7 @@
     </div>
     <% if can? :create, Storehouse %>
         <div class="text-end my-auto">
-            <%= link_to t('button.add.storehouse'), new_storehouse_path, method: :post, class: "cursor-pointer bg-gray-300 hover:bg-gray-400 px-3 py-1 font-medium hover:text-gray-800 rounded-full shadow" %>
+            <%= link_to t('button.add.storehouse'), new_storehouse_path(operation_type: "input"), method: :post, class: "cursor-pointer bg-gray-300 hover:bg-gray-400 px-3 py-1 font-medium hover:text-gray-800 rounded-full shadow" %>
         </div>
     <% end %>
 </div>
@@ -13,6 +13,13 @@
     <div class="py-4 overflow-x-auto" data-turbo="true">
         <table class="w-full text-sm text-left rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
             <tbody>
+                <tr class="bg-gray-100 border text-center">
+                    <th class="p-3"><%= t('.product_name') %></th>
+                    <th class="p-3"><%= t('.quantity') %></th>
+                    <th class="p-3"><%= t('.operation_type') %></th>
+                    <th class="p-3"><%= t('.date') %></th>
+                    <th colspan="2"></th>
+                </tr>
                 <% @storehouses.each do |storehouse| %>
                     <%= render storehouse %>
                 <% end %>

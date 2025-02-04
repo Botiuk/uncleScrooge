@@ -1,12 +1,44 @@
 <div class="grid grid-cols-1 mb-3">
     <div class="text-start text-xl font-semibold leading-none">
-        <%= t('.title') %> "<%= @product.name %>"
+        <%= t('.title') %> "<%= link_to @product.name, @product %>"
     </div>
 </div>
 
 <div class="py-4 overflow-x-auto" data-turbo="true">
-    <table class="w-full text-sm text-left rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
+    <table class="w-full text-sm text-center rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
         <tbody>
+            <tr class="odd:bg-gray-100 even:bg-white border text-center">
+                <th class="p-3"><%= t('.input') %></th>
+                <th class="p-3"><%= t('.cart') %></th>
+                <th class="p-3"><%= t('.paided') %></th>
+                <th class="p-3"><%= t('.not_sale') %></th>
+            </tr>
+            <tr class="odd:bg-gray-100 even:bg-white border text-center">
+                <td class="p-3"><%= @product_input %></td>
+                <td class="p-3"><%= @product_cart %></td>
+                <td class="p-3"><%= @product_paided %></td>
+                <td class="p-3"><%= @product_input - @product_paided %></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="grid grid-cols-1">
+    <div class="text-start text-lg font-semibold leading-none">
+        <%= t('.operation_list') %>
+    </div>
+</div>
+
+<div class="py-4 overflow-x-auto" data-turbo="true">
+    <table class="w-full text-sm rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
+        <tbody>
+            <tr class="bg-gray-100 border text-center">
+                <th class="p-3"><%= t('.product_name') %></th>
+                <th class="p-3"><%= t('.quantity') %></th>
+                <th class="p-3"><%= t('.operation_type') %></th>
+                <th class="p-3"><%= t('.date') %></th>
+                <th colspan="2"></th>
+            </tr>
             <% @storehouses.each do |storehouse| %>
                 <%= render storehouse %>
             <% end %>

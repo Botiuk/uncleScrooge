@@ -1,6 +1,6 @@
-<tr id="<%= dom_id storehouse %>" class="odd:bg-white even:bg-gray-100 border  text-center">
+<tr id="<%= dom_id storehouse %>" class="odd:bg-gray-100 even:bg-white border text-center">
     <td class="p-3 text-start">
-        <%= storehouse.product.name %>
+        <%= link_to storehouse.product.name, storehouse.product %>
     </td>
     <td class="p-3">
         <%= storehouse.quantity %>
@@ -10,9 +10,6 @@
     </td>
     <td class="p-3">
         <%= I18n.l(storehouse.created_at, format: :long) %>
-    </td>
-    <td class="p-3">
-        <%= link_to t('button.search'), storehouses_search_path(product_id: storehouse.product_id), class: "cursor-pointer bg-gray-300 hover:bg-gray-400 px-3 py-1 font-medium hover:text-gray-800 rounded-full shadow" %>
     </td>
     <td class="p-3">
         <% if can? :update, storehouse %>

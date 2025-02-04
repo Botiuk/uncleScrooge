@@ -43,6 +43,7 @@ class StorehousesController < ApplicationController
     else
       @pagy, @storehouses = pagy(Storehouse.where(product_id: params[:product_id]), limit: 30)
       @product = Product.find(params[:product_id])
+      count_product(params[:product_id])
     end
   rescue Pagy::OverflowError
     redirect_to root_path
@@ -52,6 +53,12 @@ class StorehousesController < ApplicationController
 
   def products_formhelper
     @products = Product.order(:name).pluck(:name, :id)
+  end
+
+  def count_product(product_id)
+    @product_input = Storehouse.count_product_by_operation_type(product_id, 'input')
+    @product_cart = Storehouse.count_product_by_operation_type(product_id, 'cart')
+    @product_paided = Storehouse.count_product_by_operation_type(product_id, 'paided')
   end
 
   def set_storehouse

@@ -35,6 +35,22 @@
     </div>
 </div>
 
+<div class="grid grid-cols-2 lg:grid-cols-6 md:grid-cols-4 gap-3">
+    <div class="text-center">
+        <%= t('.avaliable') %> <%= @product_input - @product_output %>
+    </div>
+    <% if can? :create, Storehouse %>
+        <div class="text-center">
+            <%= link_to t('button.add.storehouse'), new_storehouse_path(product_id: @product.id, operation_type: "input"), method: :post, class: "cursor-pointer bg-gray-300 hover:bg-gray-400 px-3 py-1 font-medium hover:text-gray-800 rounded-full shadow" %>
+        </div>
+    <% end %>
+    <% if can? :search, Storehouse %>
+        <div class="text-center">
+            <%= link_to t('button.search_storehouse'), storehouses_search_path(product_id: @product.id), class: "cursor-pointer bg-gray-300 hover:bg-gray-400 px-3 py-1 font-medium hover:text-gray-800 rounded-full shadow" %>
+        </div>
+    <% end %>
+</div>
+
 <% if @product.description.present? %>
     <div class="grid grid-cols-1 mb-2 mt-2 py-2">
         <div class="text-justify indent-4">

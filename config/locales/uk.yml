@@ -57,7 +57,8 @@ uk:
 
   button:
     back: "Назад"
-    search: "Пошук"
+    search: "Пошук товару"
+    search_storehouse: "Пошук по складу"
     сheckout: "Оплата"
     apply: "Застосувати"
     submit: "Підтвердити"
@@ -168,6 +169,7 @@ uk:
       title: "Редагувати товар"
     show:
       price: "Ціна:"
+      avaliable: "Доступно, шт.:"
     search:
       title: "Результати пошуку товарів за назвою, що містить"
       search_empty: "Товари, що відповідають запиту, не знайдено"
@@ -175,6 +177,10 @@ uk:
   storehouses:
     index:
       title: "Склад"
+      product_name: "Назва товару"
+      quantity: "Кількість"
+      operation_type: "Тип операції"
+      date: "Дата і час"
     new:
       title: "Новий товар на складі"
     form:
@@ -186,3 +192,12 @@ uk:
       title: "Редагувати товар на складі"
     search:
       title: "Результати пошуку операцій по складу для товару"
+      not_sale: "Не продано, шт."
+      input:  "Внесено на склад, шт."
+      cart: "Кошик, шт."
+      paided: "Оплачено, шт."
+      operation_list: "Список операцій"
+      product_name: "Назва товару"
+      quantity: "Кількість"
+      operation_type: "Тип операції"
+      date: "Дата і час"
