@@ -71,13 +71,14 @@ uk:
     edit: "Редагувати"
     delete: "Видалити"
     delete_confirm: "Точно видалити?"
+    delete_logout: "Точно вийти з профіля?"
 
   navbar:
     contacts: "Контакти"
-    profile: "Мій профіль"
     categories: "Категорії товарів"
     products: "Товари"
     storehouse: "Склад"
+    login: "Ввійти"
 
   main:
     index:
