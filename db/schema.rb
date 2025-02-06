@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_05_092114) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_06_075417) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -50,6 +50,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_05_092114) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "cart_storehouses", force: :cascade do |t|
+    t.bigint "cart_id", null: false
+    t.bigint "storehouse_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cart_id"], name: "index_cart_storehouses_on_cart_id"
+    t.index ["storehouse_id"], name: "index_cart_storehouses_on_storehouse_id"
   end
 
   create_table "carts", force: :cascade do |t|
@@ -102,6 +111,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_05_092114) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "cart_storehouses", "carts"
+  add_foreign_key "cart_storehouses", "storehouses"
   add_foreign_key "carts", "users"
   add_foreign_key "products", "categories"
   add_foreign_key "storehouses", "products"

@@ -41,7 +41,7 @@ class StorehousesController < ApplicationController
     if params[:product_id].blank?
       redirect_to root_path
     else
-      @pagy, @storehouses = pagy(Storehouse.where(product_id: params[:product_id]), limit: 30)
+      @pagy, @storehouses = pagy(Storehouse.where(product_id: params[:product_id]).order(updated_at: :desc), limit: 30)
       @product = Product.find(params[:product_id])
       count_product(params[:product_id])
     end

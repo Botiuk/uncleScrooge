@@ -3,6 +3,9 @@
 class Storehouse < ApplicationRecord
   belongs_to :product
 
+  has_one :cart_storehouse, dependent: :destroy
+  has_one :cart, through: :cart_storehouse, dependent: nil
+
   enum :operation_type, { input: 0, cart: 1, paided: 2 }
 
   validates :operation_type, :quantity, presence: true
