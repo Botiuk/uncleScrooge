@@ -65,7 +65,7 @@ group :development, :test do
   gem 'debug', '1.10.0', platforms: %i[mri windows], require: 'debug/prelude'
 
   # Testing framework
-  gem 'rspec-rails', '7.1.0'
+  gem 'rspec-rails', '7.1.1'
   # Fixtures replacement with a straightforward definition syntax
   gem 'factory_bot_rails', '6.4.4'
   # Library for generating fake data
