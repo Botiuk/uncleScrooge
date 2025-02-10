@@ -68,6 +68,7 @@ uk:
       category_children: "Додати підкатегорію"
       product: "Додати товар"
       storehouse: "Додати на склад"
+    add_to_cart: "Додати в кошик"
     edit: "Редагувати"
     delete: "Видалити"
     delete_confirm: "Точно видалити?"
@@ -202,3 +203,14 @@ uk:
       quantity: "Кількість"
       operation_type: "Тип операції"
       date: "Дата і час"
+
+  carts:
+    show:
+      title: "Кошик"
+      product_name: "Назва товару"
+      price: "Ціна"
+      quantity: "Кількість, шт."
+      sum: "Сума"
+      expiration_date: "Товари заброньовані у кошику до"
+      cart_total_price: "Загалом:"
+      cart_empty: "Кошик порожній. Гайда до покупок!"

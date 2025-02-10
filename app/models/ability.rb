@@ -9,7 +9,11 @@ class Ability
     can %i[show search], Product
 
     return if user.blank?
-    #   can :read, :all
+
+    can %i[show add_to_cart remove_from_cart], Cart do |cart|
+      cart.user_id == user.id
+    end
+
     return unless user.admin?
 
     can :manage, Category

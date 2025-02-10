@@ -34,7 +34,7 @@ gem 'solid_queue', '1.1.3'
 gem 'bootsnap', '1.18.4', require: false
 
 # Deploy this application anywhere as a Docker container [https://kamal-deploy.org]
-gem 'kamal', '2.5.0', require: false
+gem 'kamal', '2.5.2', require: false
 
 # Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
 gem 'thruster', '0.1.10', require: false
@@ -65,7 +65,7 @@ group :development, :test do
   gem 'debug', '1.10.0', platforms: %i[mri windows], require: 'debug/prelude'
 
   # Testing framework
-  gem 'rspec-rails', '7.1.0'
+  gem 'rspec-rails', '7.1.1'
   # Fixtures replacement with a straightforward definition syntax
   gem 'factory_bot_rails', '6.4.4'
   # Library for generating fake data

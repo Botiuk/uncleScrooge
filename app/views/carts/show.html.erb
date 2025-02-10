@@ -1,0 +1,56 @@
+<div class="grid grid-cols-1 mb-3">
+    <div class="text-start text-xl font-semibold leading-none">
+        <%= t('.title') %>
+    </div>
+</div>
+
+<% if @storehouses.present? %>
+    <div class="py-4 overflow-x-auto" data-turbo="true">
+        <table class="w-full text-sm text-left rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
+            <tbody>
+                <tr class="bg-gray-100 border text-center">
+                    <th class="p-3"><%= t('.product_name') %></th>
+                    <th class="p-3"><%= t('.price') %></th>
+                    <th class="p-3"><%= t('.quantity') %></th>
+                    <th class="p-3"><%= t('.sum') %></th>
+                    <th></th>
+                </tr>
+                <% @storehouses.each do |storehouse| %>
+                    <tr id="<%= dom_id storehouse %>" class="odd:bg-gray-100 even:bg-white border text-center">
+                        <td class="p-3 text-start">
+                            <%= link_to storehouse.product.name, storehouse.product %>
+                        </td>
+                        <td class="p-3">
+                            <%= number_to_currency(storehouse.product.price) %>
+                        </td>
+                        <td class="p-3">
+                            <%= storehouse.quantity %>
+                        </td>
+                        <td class="p-3">
+                            <%= number_to_currency(storehouse.quantity * storehouse.product.price) %>
+                        </td>
+                        <td class="p-3">
+                        </td>
+                    </tr>
+                <% end %>
+                <tr class="odd:bg-gray-100 even:bg-white border text-center">
+                    <th class="p-3 text-start"><%= t('.cart_total_price') %></th>
+                    <th></th>
+                    <th class="p-3"><%= @cart_items %></th>
+                    <th class="p-3"><%= number_to_currency(@cart_price) %></th>
+                    <th></th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="grid grid-cols-1 mb-3">
+        <div class="text-start font-semibold leading-none">
+            <%= t('.expiration_date') %>: <%= I18n.l(@cart.created_at + 24.hours, format: :long) %>
+        </div>
+    </div>
+
+    <%= render 'shared/pagy' %>
+<% else %>
+    <%= t('.cart_empty') %>
+<% end %>

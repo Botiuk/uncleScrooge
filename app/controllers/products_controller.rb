@@ -14,8 +14,9 @@ class ProductsController < ApplicationController
 
   def show
     @category = Category.find(@product.category_id)
-    @product_input = Storehouse.count_product_by_operation_type(@product.id, 'input')
-    @product_output = Storehouse.count_product_by_operation_type(@product.id, %w[cart paided])
+    product_input = Storehouse.count_product_by_operation_type(@product.id, 'input')
+    product_output = Storehouse.count_product_by_operation_type(@product.id, %w[cart paided])
+    @product_avaliable = product_input - product_output
   end
 
   def new
