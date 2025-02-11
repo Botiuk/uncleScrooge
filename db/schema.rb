@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_06_075417) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_11_073006) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -66,6 +66,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_06_075417) do
     t.integer "cart_status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "expiration_time", default: "3025-01-01 00:00:00", null: false
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
 

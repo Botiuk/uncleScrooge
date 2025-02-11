@@ -33,4 +33,25 @@ RSpec.describe Cart do
       expect(cart.cart_status).to eq('paided')
     end
   end
+
+  describe 'cart expiration_time' do
+    it 'expiration_time does not set in factory' do
+      cart = build(:cart)
+      expect(cart.expiration_time).to eq('3025-01-01 00:00:00')
+    end
+
+    it 'expiration_time put on create' do
+      cart_time = (DateTime.current + 10.hours).to_fs(:db)
+      cart = build(:cart, expiration_time: cart_time)
+      expect(cart.expiration_time).to eq(cart_time)
+    end
+
+    it 'expiration_time put on change' do
+      cart = create(:cart)
+      cart_time = (DateTime.current + 10.hours).to_fs(:db)
+      cart.expiration_time = cart_time
+      cart.save
+      expect(cart.expiration_time).to eq(cart_time)
+    end
+  end
 end
