@@ -40,7 +40,7 @@ gem 'kamal', '2.5.2', require: false
 gem 'thruster', '0.1.10', require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-gem 'image_processing', '1.13.0'
+gem 'image_processing', '1.14.0'
 # Client library for easily using the Cloudinary service
 gem 'cloudinary', '2.2.0'
 

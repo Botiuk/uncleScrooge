@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
     return unless user_signed_in?
 
     @cart ||= Cart.where(user_id: current_user.id, cart_status: 'active')
-                  .where('created_at > ?', 24.hours.ago).last
+                  .where('expiration_time > ?', 24.hours.ago).last
 
     return unless @cart.nil?
 

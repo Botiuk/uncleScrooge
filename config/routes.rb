@@ -20,9 +20,11 @@ Rails.application.routes.draw do
   get 'storehouses/search', to: 'storehouses#search'
   post 'add_to_cart', to: 'carts#add_to_cart'
   post 'remove_from_cart', to: 'carts#remove_from_cart'
+  post 'minus_one_item', to: 'carts#minus_one_item'
+  post 'plus_one_item', to: 'carts#plus_one_item'
 
   resources :categories
   resources :products, except: :destroy
   resources :storehouses, except: :show
-  resources :carts, only: :show
+  resources :carts, only: %i[show destroy]
 end

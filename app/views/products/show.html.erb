@@ -54,12 +54,19 @@
 <% if can? :add_to_cart, Cart %>
     <div class="grid grid-cols-1">
         <div class="">
-            <%= form_with(url: add_to_cart_path) do |form| %>
-                <%= form.hidden_field :product_id, value: @product.id %>
-                <%= form.number_field :quantity, value: 0, step: 1, min: 1, max: @product_avaliable, class: "appearance-none bg-gray-100 text-gray-700 border border-gray-200 focus:border-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" %>
-                <%= form.button nil, class: "cursor-pointer bg-gray-300 hover:bg-gray-400 px-3 py-1 font-medium hover:text-gray-800 rounded-full shadow" do %>
-                    <%= t('button.add_to_cart') %>
+            <% if @product_avaliable > 0 %>
+                <%= form_with(url: add_to_cart_path) do |form| %>
+                    <%= form.hidden_field :product_id, value: @product.id %>
+                    <%= form.number_field :quantity, value: 0, step: 1, min: 1, max: @product_avaliable, class: "appearance-none bg-gray-100 text-gray-700 border border-gray-200 focus:border-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" %>
+                    <%= form.button nil, class: "cursor-pointer bg-gray-300 hover:bg-gray-400 px-3 py-1 font-medium hover:text-gray-800 rounded-full shadow" do %>
+                        <%= t('button.add_to_cart') %>
+                    <% end %>
                 <% end %>
+            <% else %>
+                <%= t('.not_avaliable') %>
+            <% end %>
+            <% if @storehouse_record.present? %>
+                <%= t('.in_my_cart') %>  <%= @storehouse_record.quantity %>
             <% end %>
         </div>
     </div>

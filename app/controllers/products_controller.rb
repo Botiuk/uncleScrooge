@@ -17,6 +17,7 @@ class ProductsController < ApplicationController
     product_input = Storehouse.count_product_by_operation_type(@product.id, 'input')
     product_output = Storehouse.count_product_by_operation_type(@product.id, %w[cart paided])
     @product_avaliable = product_input - product_output
+    @storehouse_record = @cart.storehouses.find_by(product_id: @product.id)
   end
 
   def new

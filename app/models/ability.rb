@@ -10,7 +10,7 @@ class Ability
 
     return if user.blank?
 
-    can %i[show add_to_cart remove_from_cart], Cart do |cart|
+    can %i[show destroy add_to_cart remove_from_cart minus_one_item plus_one_item], Cart do |cart|
       cart.user_id == user.id
     end
 
