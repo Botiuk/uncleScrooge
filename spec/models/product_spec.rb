@@ -23,5 +23,17 @@ RSpec.describe Product do
       product = build(:product, category_id: nil)
       expect(product).not_to be_valid
     end
+
+    it 'is not valid with same name' do
+      product_one = create(:product)
+      product_two = build(:product, name: product_one.name)
+      expect(product_two).not_to be_valid
+    end
+
+    it 'is not valid with same name, case sensetive false' do
+      product_one = create(:product)
+      product_two = build(:product, name: product_one.name.swapcase)
+      expect(product_two).not_to be_valid
+    end
   end
 end

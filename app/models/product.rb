@@ -8,4 +8,5 @@ class Product < ApplicationRecord
   has_rich_text :description
 
   validates :name, :price, presence: true
+  validates :name, uniqueness: { case_sensitive: false }
 end
