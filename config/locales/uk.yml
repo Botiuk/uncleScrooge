@@ -93,6 +93,7 @@ uk:
   main:
     index:
       welcome_html: "Вітаємо у нумізматичному магазині &quot;дядько Скрудж&quot;!"
+      last_update_products: "Останні надходження"
     contacts: 
       title: "Наші контакти"
 
@@ -162,6 +163,8 @@ uk:
   products:
     index:
       title: "Товари"
+    product:
+      quantity: "шт."
     new:
       title: "Новий товар"
     form:

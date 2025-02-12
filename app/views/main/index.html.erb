@@ -1,1 +1,15 @@
-<div class="mb-2 text-center text-xl font-medium leading-tight"><%= t('.welcome_html') %></div>
+<div class="mb-3 text-center text-xl font-medium leading-tight"><%= t('.welcome_html') %></div>
+
+<div class="grid grid-cols-1 mb-3">
+    <div class="text-start text-xl font-semibold leading-none">
+        <%= t('.last_update_products') %>
+    </div>
+</div>
+
+<% if @products.present? %>
+    <div class="grid grid-cols-2 lg:grid-cols-6 md:grid-cols-4 gap-3">
+        <% @products.each do |product| %>
+            <%= render product %>
+        <% end %>
+    </div>
+<% end %>

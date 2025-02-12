@@ -54,7 +54,7 @@
             </div>
         </div>
         <nav :class="isOpen ? '' : 'hidden'" class="sm:flex sm:justify-center sm:items-center mt-4">
-            <div class="flex flex-col sm:flex-row text-center">
+            <div class="flex flex-col sm:flex-row text-center items-center justify-center">
                 <% @navbar_root_categories.each do |root_category| %>
                     <%= link_to root_category.name, shop_path(id: root_category.id), class: "mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" %>
                 <% end %>
