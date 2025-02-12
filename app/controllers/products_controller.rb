@@ -8,16 +8,15 @@ class ProductsController < ApplicationController
 
   def index
     @pagy, @products = pagy(Product.order(:price), limit: 30)
+    avaliable_products_hash
   rescue Pagy::OverflowError
     redirect_to products_path(page: 1)
   end
 
   def show
     @category = Category.find(@product.category_id)
-    product_input = Storehouse.count_product_by_operation_type(@product.id, 'input')
-    product_output = Storehouse.count_product_by_operation_type(@product.id, %w[cart paided])
-    @product_avaliable = product_input - product_output
-    @storehouse_record = @cart.storehouses.find_by(product_id: @product.id)
+    @product_avaliable = Storehouse.count_avaliable_product(@product.id)
+    @storehouse_record = @cart.storehouses.find_by(product_id: @product.id) if user_signed_in?
   end
 
   def new
@@ -53,6 +52,7 @@ class ProductsController < ApplicationController
       @pagy, @products = pagy(Product.where('lower(name) LIKE ?', "%#{params[:product_name].downcase}%")
                                      .order(:price), limit: 20)
       @search_param = params[:product_name]
+      avaliable_products_hash
     end
   rescue Pagy::OverflowError
     redirect_to root_path

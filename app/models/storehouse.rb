@@ -14,4 +14,10 @@ class Storehouse < ApplicationRecord
   def self.count_product_by_operation_type(product_id, operation_type)
     Storehouse.where(product_id: product_id, operation_type: operation_type).sum(:quantity)
   end
+
+  def self.count_avaliable_product(product_id)
+    product_input = Storehouse.count_product_by_operation_type(product_id, 'input')
+    product_output = Storehouse.count_product_by_operation_type(product_id, %w[cart paided])
+    product_input - product_output
+  end
 end

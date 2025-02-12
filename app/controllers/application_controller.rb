@@ -30,4 +30,13 @@ class ApplicationController < ActionController::Base
 
     @cart = Cart.create(user_id: current_user.id, cart_status: 'active')
   end
+
+  def avaliable_products_hash
+    @avaliable_products = []
+    @products.each do |product|
+      product_avaliable = Storehouse.count_avaliable_product(product.id)
+      @avaliable_products << [product.id, product_avaliable] if product_avaliable.positive?
+    end
+    @avaliable_products = @avaliable_products.to_h
+  end
 end

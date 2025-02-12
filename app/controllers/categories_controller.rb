@@ -46,6 +46,7 @@ class CategoriesController < ApplicationController
   def shop
     @pagy, @products = pagy(Product.where(category_id: @category.descendant_ids)
                                    .or(Product.where(category_id: @category.id)).order(:price), limit: 20)
+    avaliable_products_hash
   rescue Pagy::OverflowError
     redirect_to root_path
   end

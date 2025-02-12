@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class CartsController < ApplicationController
-  before_action :set_storehouse, only: %i[destroy minus_one_item plus_one_item]
+  before_action :set_storehouse, only: %i[destroy remove_from_cart minus_one_item plus_one_item]
   before_action :check_product_avaliable, only: %i[add_to_cart plus_one_item]
+  authorize_resource
 
   def show
     storehouses_ids = CartStorehouse.where(cart_id: @cart.id).pluck(:storehouse_id)
@@ -22,11 +23,11 @@ class CartsController < ApplicationController
     @product = Product.find_by(id: params[:product_id])
     @storehouse = @cart.storehouses.find_by(product_id: @product.id)
     if @product_avaliable >= params[:quantity].to_i
-      add_to_new_or_exist_storehouse
+      add_new_or_update_exist_storehouse
       redirect_to @product, notice: t('notice.create.product_to_cart')
     elsif @product_avaliable.positive?
       params[:quantity] = @product_avaliable
-      add_to_new_or_exist_storehouse
+      add_new_or_update_exist_storehouse
       redirect_to @product, alert: t('alert.update.part_add_to_cart')
     else
       redirect_to @product, alert: t('alert.update.not_add_to_cart')
@@ -61,9 +62,7 @@ class CartsController < ApplicationController
   private
 
   def check_product_avaliable
-    product_input = Storehouse.count_product_by_operation_type(params[:product_id], 'input')
-    product_output = Storehouse.count_product_by_operation_type(params[:product_id], %w[cart paided])
-    @product_avaliable = product_input - product_output
+    @product_avaliable = Storehouse.count_avaliable_product(params[:product_id])
   end
 
   def set_storehouse
@@ -79,7 +78,7 @@ class CartsController < ApplicationController
     end
   end
 
-  def add_to_new_or_exist_storehouse
+  def add_new_or_update_exist_storehouse
     if @storehouse.present?
       new_quantity = @storehouse.quantity + params[:quantity].to_i
       @storehouse.update(quantity: new_quantity)
@@ -88,6 +87,6 @@ class CartsController < ApplicationController
                                          operation_type: 'cart', quantity: params[:quantity])
       CartStorehouse.create(cart_id: @cart.id, storehouse_id: new_storehouse.id)
     end
-    @cart.update(expiration_time: (DateTime.current + 24.hours))
+    @cart.update(expiration_time: 24.hours.from_now)
   end
 end

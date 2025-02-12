@@ -23,10 +23,18 @@
                 <%= link_to @category.name, shop_path(id: @category.id) %>
             </div>
         </div>
-        <% if @products.present? %>
+        <% if (@products.present? && @avaliable_products.size.positive?) || (@products.present? && @avaliable_products.size.zero? && (can? :manage, Product)) %>
             <div class="grid grid-cols-2 lg:grid-cols-5 md:grid-cols-3 gap-3">
-                <% @products.each do |product| %>
-                    <%= render 'products/product', product: product %>
+                <% if can? :manage, Product %>
+                    <% @products.each do |product| %>
+                        <%= render 'products/product', product: product %>
+                    <% end %>
+                <% else %>
+                    <% @products.each do |product| %>
+                        <% if @avaliable_products.has_key?(product.id) %>
+                            <%= render 'products/product', product: product %>
+                        <% end %>
+                    <% end %>
                 <% end %>
             </div>
         <% else %>

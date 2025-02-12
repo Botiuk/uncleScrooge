@@ -1,29 +1,50 @@
 <div id="<%= dom_id product %>">
-    <div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
-        <%= link_to product, class: "" do %>
-            <% if product.photos.attached? %>
-                <img class="p-4" src="<%= cloudinary_url(product.photos.first.key, height: 200, crop: :scale) %>" style="width:100%;">
-            <% end %>
-
-            <div class="px-4">
-                <div class="text-lg text-center font-medium leading-tight truncate">
-                    <%= product.name %>
-                </div>
-            </div>
-
-            <div class="p-4">
-                <div class="text-sm text-center font-light leading-tight">
-                    <%= number_to_currency(product.price) %>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1" data-turbo="true">
-                <div class="pb-2 text-center">
-                    <% if can? :update, product %>
-                        <%= link_to t('button.edit'), edit_product_path(product), class: "cursor-pointer bg-gray-300 hover:bg-gray-400 px-3 py-1 font-medium hover:text-gray-800 rounded-full shadow" %>
-                    <% end %>
-                </div>
-            </div>
+    <% if @avaliable_products.has_key?(product.id) %>
+        <div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
+    <% else %>
+        <% if can? :manage, Product %>
+            <div class="block rounded-lg bg-gray-100 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
+        <% else %>
+            <div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
         <% end %>
-    </div>
+    <% end %>
+            <%= link_to product, class: "" do %>
+                <% if product.photos.attached? %>
+                    <img class="p-4" src="<%= cloudinary_url(product.photos.first.key, height: 200, crop: :scale) %>" style="width:100%;">
+                <% end %>
+
+                <div class="px-4 pb-2">
+                    <div class="text-lg text-center font-medium leading-tight truncate">
+                        <%= product.name %>
+                    </div>
+                </div>
+
+                <div class="pb-2">
+                    <div class="text-center leading-tight">
+                        <%= number_to_currency(product.price) %>
+                    </div>
+                </div>
+
+                <% if user_signed_in? %>
+                    <div class="pb-2">
+                        <div class="text-center leading-tight">
+                            <% if @avaliable_products.has_key?(product.id) %>
+                                <%= @avaliable_products.values_at(product.id).join %>
+                            <% else %>
+                            0
+                            <% end %>
+                            <%= t('.quantity') %>
+                        </div>
+                    </div>
+                <% end %>
+
+                <div class="grid grid-cols-1" data-turbo="true">
+                    <div class="pb-2 text-center">
+                        <% if can? :update, product %>
+                            <%= link_to t('button.edit'), edit_product_path(product), class: "cursor-pointer bg-gray-300 hover:bg-gray-400 px-3 py-1 font-medium hover:text-gray-800 rounded-full shadow" %>
+                        <% end %>
+                    </div>
+                </div>
+            <% end %>
+        </div>
 </div>
