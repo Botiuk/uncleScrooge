@@ -37,7 +37,7 @@ gem 'bootsnap', '1.18.4', require: false
 gem 'kamal', '2.5.2', require: false
 
 # Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
-gem 'thruster', '0.1.10', require: false
+gem 'thruster', '0.1.11', require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem 'image_processing', '1.14.0'
