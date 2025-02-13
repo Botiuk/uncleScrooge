@@ -1,6 +1,7 @@
 uk:
   appname: "дядько Скрудж"
   author: "Svitlana Botiuk"
+  app_time: "Ми працюмо за східноєвропейським стандартним часом"
 
   time:
     formats:
