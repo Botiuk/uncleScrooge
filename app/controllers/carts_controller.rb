@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class CartsController < ApplicationController
-  before_action :set_storehouse, only: %i[destroy remove_from_cart minus_one_item plus_one_item]
+  before_action :set_cart, only: %i[show destroy]
+  before_action :set_storehouse, only: %i[remove_from_cart minus_one_item plus_one_item]
   before_action :check_product_avaliable, only: %i[add_to_cart plus_one_item]
   authorize_resource
 
@@ -61,6 +62,12 @@ class CartsController < ApplicationController
 
   private
 
+  def set_cart
+    @cart = Cart.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to root_path
+  end
+
   def check_product_avaliable
     @product_avaliable = Storehouse.count_avaliable_product(params[:product_id])
   end
@@ -84,7 +91,7 @@ class CartsController < ApplicationController
       @storehouse.update(quantity: new_quantity)
     else
       new_storehouse = Storehouse.create(product_id: @product.id,
-                                         operation_type: 'cart', quantity: params[:quantity])
+                                          operation_type: 'cart', quantity: params[:quantity])
       CartStorehouse.create(cart_id: @cart.id, storehouse_id: new_storehouse.id)
     end
     @cart.update(expiration_time: 24.hours.from_now)

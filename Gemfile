@@ -80,13 +80,13 @@ group :development do
   gem 'brakeman', '7.0.0', require: false
 
   # RuboCop is a Ruby code style checking and code formatting tool.
-  gem 'rubocop', '1.71.2', require: false
+  gem 'rubocop', '1.72.1', require: false
   # Automatic Rails code style checking tool.
-  gem 'rubocop-rails', '2.29.1', require: false
+  gem 'rubocop-rails', '2.30.1', require: false
   # A collection of RuboCop cops to check for performance optimizations in Ruby code.
-  gem 'rubocop-performance', '1.23.1', require: false
+  gem 'rubocop-performance', '1.24.0', require: false
   # Code style checking for RSpec files
-  gem 'rubocop-rspec', '3.4.0', require: false
+  gem 'rubocop-rspec', '3.5.0', require: false
   gem 'rubocop-rspec_rails', '2.30.0', require: false
   # Code style checking for factory_bot files
   gem 'rubocop-factory_bot', '2.26.1', require: false

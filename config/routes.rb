@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   post 'remove_from_cart', to: 'carts#remove_from_cart'
   post 'minus_one_item', to: 'carts#minus_one_item'
   post 'plus_one_item', to: 'carts#plus_one_item'
+  get 'user_profile', to: 'main#user_profile'
 
   resources :categories
   resources :products, except: :destroy

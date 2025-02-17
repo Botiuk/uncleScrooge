@@ -7,6 +7,7 @@ uk:
     formats:
       default: "%H:%M"
       long: "%H:%M, %e.%m.%Y"
+      long_reverse: "%e.%m.%Y (%H:%M)"
 
   forms:
     messages:
@@ -90,6 +91,7 @@ uk:
     products: "Товари"
     storehouse: "Склад"
     login: "Ввійти"
+    edit_user_registration: "Редагувати профіль"
 
   main:
     index:
@@ -97,6 +99,12 @@ uk:
       last_update_products: "Останні надходження"
     contacts: 
       title: "Наші контакти"
+    user_profile:
+      title: "Профіль користувача"
+      my_old_orders: "Мої покупки"
+      old_cart: "Замовлення від"
+      old_carts_empty: "Немає історії покупок, але це легко виправити. Гайда до нових покупок!"
+      my_delivery_adress: "Мої дані для доставки"
 
   shared:
     cart_open:
@@ -222,6 +230,7 @@ uk:
   carts:
     show:
       title: "Кошик"
+      title_old_cart: "Замовлення від"
       product_name: "Назва товару"
       price: "Ціна"
       quantity: "Кількість, шт."
