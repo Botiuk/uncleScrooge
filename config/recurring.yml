@@ -13,7 +13,7 @@ development:
   periodic_cleanup:
     class: CartsCleanupJob
     queue: background
-    schedule: every day at midnight
+    schedule: every 3 minutes
 
 production:
   periodic_cleanup:

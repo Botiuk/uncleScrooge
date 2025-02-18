@@ -2,6 +2,6 @@
 
 require 'rails_helper'
 
-RSpec.describe CartsCleanupJob do
-  pending "add some examples to (or delete) #{__FILE__}"
-end
+# RSpec.describe CartsCleanupJob do
+#   pending "add some examples to (or delete) #{__FILE__}"
+# end

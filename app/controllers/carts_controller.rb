@@ -91,7 +91,7 @@ class CartsController < ApplicationController
       @storehouse.update(quantity: new_quantity)
     else
       new_storehouse = Storehouse.create(product_id: @product.id,
-                                          operation_type: 'cart', quantity: params[:quantity])
+                                         operation_type: 'cart', quantity: params[:quantity])
       CartStorehouse.create(cart_id: @cart.id, storehouse_id: new_storehouse.id)
     end
     @cart.update(expiration_time: 24.hours.from_now)

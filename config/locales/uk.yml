@@ -33,6 +33,16 @@ uk:
           input: "внесення"
           cart: "кошик"
           paided: "оплачено"
+      delivery_address:
+        post_service: "Поштовий оператор"
+        post_services:
+          post: "Пошта"
+          newpost: "Нова пошта"
+        country: "Країна"
+        locality: "Населений пункт"
+        address: "Адреса"
+        personal_name: "ПІП отримувача"
+        phone: "Номер телефону"
   validation:
     ancestry:
       uniq: "має бути унікальна. Така підкатегорія в даній категорії вже є"

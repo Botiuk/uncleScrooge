@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_12_095846) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_18_095335) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -79,6 +79,19 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_12_095846) do
     t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
+  create_table "delivery_addresses", force: :cascade do |t|
+    t.integer "post_service", null: false
+    t.string "country", null: false
+    t.string "locality", null: false
+    t.string "address", null: false
+    t.string "personal_name", null: false
+    t.string "phone", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_delivery_addresses_on_user_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name", null: false
     t.decimal "price", precision: 8, scale: 2, default: "0.0", null: false
@@ -116,6 +129,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_12_095846) do
   add_foreign_key "cart_storehouses", "carts"
   add_foreign_key "cart_storehouses", "storehouses"
   add_foreign_key "carts", "users"
+  add_foreign_key "delivery_addresses", "users"
   add_foreign_key "products", "categories"
   add_foreign_key "storehouses", "products"
 end

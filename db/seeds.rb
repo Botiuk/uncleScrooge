@@ -18,6 +18,15 @@ when 'development'
     password_confirmation: ENV.fetch('SEEDS_PASS', nil)
   )
 
+  15.times do
+    password = Faker::Internet.password(min_length: 6)
+    User.create(
+      email: Faker::Internet.unique.email(domain: 'mail.com'),
+      password: password,
+      password_confirmation: password
+    )
+  end
+
   ActiveStorage::Blob.create!(
     key: '5l03ux8k0t6veuv95qslnibxrpob',
     filename: 'category_avatar.jpg',
@@ -117,6 +126,21 @@ when 'development'
       product_id: product_id,
       quantity: Faker::Number.between(from: 1, to: 30)
     )
+  end
+
+  user_ids = User.ids
+  user_ids.each do |user_id|
+    rand(1..3).times do
+      DeliveryAddress.create(
+        post_service: DeliveryAddress.post_services.keys.sample,
+        country: Faker::Address.country,
+        locality: Faker::Address.city,
+        address: "#{Faker::Address.street_name} #{Faker::Number.within(range: 1..33)}",
+        personal_name: Faker::Name.name,
+        phone: Faker::PhoneNumber.cell_phone,
+        user_id: user_id
+      )
+    end
   end
 
 when 'production'

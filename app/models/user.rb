@@ -8,4 +8,5 @@ class User < ApplicationRecord
   enum :role, { client: 0, admin: 1 }, default: :client
 
   has_many :carts, dependent: :destroy
+  has_many :delivery_addresses, dependent: :destroy
 end
