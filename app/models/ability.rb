@@ -14,6 +14,9 @@ class Ability
     can %i[show destroy add_to_cart remove_from_cart minus_one_item plus_one_item], Cart do |cart|
       cart.user_id == user.id
     end
+    can :manage, DeliveryAddress do |delivery_address|
+      delivery_address.user_id == user.id
+    end
 
     return unless user.admin?
 

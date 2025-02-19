@@ -8,7 +8,7 @@
 </div>
 
 <div class="grid grid-cols-1 mb-3">
-    <div class="text-start font-semibold leading-none">
+    <div class="text-start text-lg font-semibold leading-none">
         <%= t('.my_old_orders') %>
     </div>
 </div>
@@ -27,8 +27,23 @@
     </div>
 <% end %>
 
-<div class="grid grid-cols-1 mb-3">
-    <div class="text-start font-semibold leading-none">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+    <div class="text-start text-lg font-semibold leading-none">
         <%= t('.my_delivery_adress') %>
     </div>
+    <div class="text-end my-auto">
+        <%= link_to t('button.add.delivery_address'), new_delivery_address_path, method: :post, class: "cursor-pointer bg-gray-300 hover:bg-gray-400 px-3 py-1 font-medium hover:text-gray-800 rounded-full shadow" %>
+    </div>
 </div>
+
+<% if @delivery_addresses.present? %>
+    <div class="grid grid-cols-1 mb-3">
+        <% @delivery_addresses.each do |delivery_address| %>
+            <%= render 'delivery_addresses/delivery_address', delivery_address: delivery_address %>
+        <% end %>
+    </div>
+<% else %>
+    <div class="mb-3">
+        <%= t('.delivery_addresses_empty') %>
+    </div>
+<% end %>

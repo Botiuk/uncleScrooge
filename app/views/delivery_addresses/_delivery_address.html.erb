@@ -1,0 +1,23 @@
+<div id="<%= dom_id delivery_address %>">
+    <div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] mb-3">
+        <div class="p-4">
+            <div class="text-start font-medium leading-tight">
+                <%= DeliveryAddress.human_enum_name(:post_service, delivery_address.post_service) %><br>
+                <%= delivery_address.country %><br>
+                <%= delivery_address.locality %>, <%= delivery_address.address %><br>
+                <%= delivery_address.personal_name %>, <%= delivery_address.phone %>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 px-4" data-turbo="true">
+            <div class="pb-2 text-start">
+                <% if can? :update, delivery_address %>
+                    <%= link_to t('button.edit'), edit_delivery_address_path(delivery_address), class: "cursor-pointer bg-gray-300 hover:bg-gray-400 px-3 py-1 font-medium hover:text-gray-800 rounded-full shadow" %>
+                <% end %>                    
+                <% if can? :destroy, delivery_address %>
+                    <%= button_to t('button.delete'), delivery_address, method: :delete, data: { turbo_confirm: t('button.delete_confirm') }, class: "cursor-pointer bg-gray-300 hover:bg-gray-400 px-3 py-1 font-medium hover:text-gray-800 rounded-full shadow", form: {style: 'display:inline-block;'} %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

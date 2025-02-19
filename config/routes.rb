@@ -28,4 +28,5 @@ Rails.application.routes.draw do
   resources :products, except: :destroy
   resources :storehouses, except: :show
   resources :carts, only: %i[show destroy]
+  resources :delivery_addresses, except: %i[index show]
 end

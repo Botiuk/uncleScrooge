@@ -36,7 +36,7 @@ uk:
       delivery_address:
         post_service: "Поштовий оператор"
         post_services:
-          post: "Пошта"
+          ukrpost: "Укрпошта"
           newpost: "Нова пошта"
         country: "Країна"
         locality: "Населений пункт"
@@ -53,15 +53,18 @@ uk:
       product: "Товар успішно додано"
       storehouse: "Товар успішно додано на склад"
       product_to_cart: "Товар у кошик успішно додано"
+      delivery_address: "Адреса доставки успішно додана"
     update:
       category: "Категорія успішно оновлена"
       product: "Товар успішно оновлено"
       storehouse: "Товар на складі успішно оновлено"
+      delivery_address: "Адреса доставки успішно оновлена"
     destroy:
       category: "Категорія успішно видалена"
       storehouse: "Товар зі складу успішно видалено"
       cart: "Кошик очищено"
       product_from_cart: "Товар з кошика видалено"
+      delivery_address: "Адреса доставки успішно видалена"
 
   alert:
     cancan_access_denied: "Ви не маєте прав для доступу до цієї сторінки"
@@ -87,6 +90,7 @@ uk:
       category_children: "Додати підкатегорію"
       product: "Додати товар"
       storehouse: "Додати на склад"
+      delivery_address: "Додати адресу для доставки"
     add_to_cart: "Додати в кошик"
     edit: "Редагувати"
     delete: "Видалити"
@@ -114,12 +118,8 @@ uk:
       my_old_orders: "Мої покупки"
       old_cart: "Замовлення від"
       old_carts_empty: "Немає історії покупок, але це легко виправити. Гайда до нових покупок!"
-      my_delivery_adress: "Мої дані для доставки"
-
-  shared:
-    cart_open:
-      title: "Моя корзина"
-      add_promocode: "Додати код на знижку"
+      my_delivery_adress: "Мої адреси для доставки"
+      delivery_addresses_empty: "Немає збережених адрес"
 
   devise:
     sessions:
@@ -249,3 +249,24 @@ uk:
       expiration_date: "Товари заброньовані у кошику до"
       cart_total_price: "Загалом:"
       cart_empty: "Кошик порожній. Гайда до покупок!"
+
+  delivery_addresses:
+    form:
+      post_service: "Поштова служба:"
+      country: "Країна:"
+      locality: "Населений пункт:"
+      address: "Адреса:"
+      personal_name: "ПІП отримувача:"
+      phone: "Номер телефону отримувача:"
+      prompt:
+        post_service: "-- виберіть поштову службу --"
+      placeholder:
+        country: "Введіть країну"
+        locality: "Введіть населений пункт"
+        address: "Введіть свою адресу або адресу офісу поштової служби"
+        personal_name: "Введіть ПІП отримувача"
+        phone: "+38123456789"
+    new:
+      title: "Нова адреса для доставки"
+    edit:
+      title: "Редагувати адресу для доставки"

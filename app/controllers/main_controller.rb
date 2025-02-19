@@ -14,5 +14,6 @@ class MainController < ApplicationController
 
   def user_profile
     @old_carts = Cart.where(user_id: current_user.id, cart_status: 'paided').order(updated_at: :desc)
+    @delivery_addresses = DeliveryAddress.where(user_id: current_user.id)
   end
 end
