@@ -9,4 +9,5 @@ class User < ApplicationRecord
 
   has_many :carts, dependent: :destroy
   has_many :delivery_addresses, dependent: :destroy
+  has_many :payment_cards, dependent: :destroy
 end

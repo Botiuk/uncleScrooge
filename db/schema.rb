@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_18_095335) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_20_090727) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -92,6 +92,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_18_095335) do
     t.index ["user_id"], name: "index_delivery_addresses_on_user_id"
   end
 
+  create_table "payment_cards", force: :cascade do |t|
+    t.string "card_number", null: false
+    t.integer "expiry_month", null: false
+    t.integer "expiry_year", null: false
+    t.integer "cvv", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_payment_cards_on_user_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name", null: false
     t.decimal "price", precision: 8, scale: 2, default: "0.0", null: false
@@ -130,6 +141,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_18_095335) do
   add_foreign_key "cart_storehouses", "storehouses"
   add_foreign_key "carts", "users"
   add_foreign_key "delivery_addresses", "users"
+  add_foreign_key "payment_cards", "users"
   add_foreign_key "products", "categories"
   add_foreign_key "storehouses", "products"
 end

@@ -43,9 +43,16 @@ uk:
         address: "Адреса"
         personal_name: "ПІП отримувача"
         phone: "Номер телефону"
+      payment_card:
+        card_number: "Номер картки"
+        expiry_month: "Картка дійсна до (місяць)"
+        expiry_year: "Картка дійсна до (рік)"
+        cvv: "CVV-код"
   validation:
     ancestry:
       uniq: "має бути унікальна. Така підкатегорія в даній категорії вже є"
+    payment_card:
+      number: "має містити тільки цифри"
 
   notice:
     create:
