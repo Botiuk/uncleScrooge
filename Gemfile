@@ -42,7 +42,7 @@ gem 'thruster', '0.1.11', require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem 'image_processing', '1.14.0'
 # Client library for easily using the Cloudinary service
-gem 'cloudinary', '2.2.0'
+gem 'cloudinary', '2.3.0'
 
 # A set of common locale data and translations to internationalize and/or localize your Rails applications
 gem 'rails-i18n', '8.0.1'
