@@ -18,3 +18,4 @@ Metrics/AbcSize:
     - 'app/controllers/categories_controller.rb'
     - 'app/controllers/products_controller.rb'
     - 'app/models/ability.rb'
+    - 'app/validators/payment_card_validator.rb'

@@ -42,7 +42,7 @@ gem 'thruster', '0.1.11', require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem 'image_processing', '1.14.0'
 # Client library for easily using the Cloudinary service
-gem 'cloudinary', '2.2.0'
+gem 'cloudinary', '2.3.0'
 
 # A set of common locale data and translations to internationalize and/or localize your Rails applications
 gem 'rails-i18n', '8.0.1'
@@ -82,7 +82,7 @@ group :development do
   # RuboCop is a Ruby code style checking and code formatting tool.
   gem 'rubocop', '1.72.2', require: false
   # Automatic Rails code style checking tool.
-  gem 'rubocop-rails', '2.30.1', require: false
+  gem 'rubocop-rails', '2.30.2', require: false
   # A collection of RuboCop cops to check for performance optimizations in Ruby code.
   gem 'rubocop-performance', '1.24.0', require: false
   # Code style checking for RSpec files
