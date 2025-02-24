@@ -47,3 +47,24 @@
         <%= t('.delivery_addresses_empty') %>
     </div>
 <% end %>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+    <div class="text-start text-lg font-semibold leading-none">
+        <%= t('.my_payment_cards') %>
+    </div>
+    <div class="text-end my-auto">
+        <%= link_to t('button.add.payment_card'), new_payment_card_path, method: :post, class: "cursor-pointer bg-gray-300 hover:bg-gray-400 px-3 py-1 font-medium hover:text-gray-800 rounded-full shadow" %>
+    </div>
+</div>
+
+<% if @payment_cards.present? %>
+    <div class="grid grid-cols-1 mb-3">
+        <% @payment_cards.each do |payment_card| %>
+            <%= render 'payment_cards/payment_card', payment_card: payment_card %>
+        <% end %>
+    </div>
+<% else %>
+    <div class="mb-3">
+        <%= t('.payment_cards_empty') %>
+    </div>
+<% end %>

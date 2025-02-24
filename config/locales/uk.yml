@@ -64,17 +64,20 @@ uk:
       storehouse: "Товар успішно додано на склад"
       product_to_cart: "Товар у кошик успішно додано"
       delivery_address: "Адреса доставки успішно додана"
+      payment_card: "Картка успішно додана"
     update:
       category: "Категорія успішно оновлена"
       product: "Товар успішно оновлено"
       storehouse: "Товар на складі успішно оновлено"
       delivery_address: "Адреса доставки успішно оновлена"
+      payment_card: "Картка успішно оновлена"
     destroy:
       category: "Категорія успішно видалена"
       storehouse: "Товар зі складу успішно видалено"
       cart: "Кошик очищено"
       product_from_cart: "Товар з кошика видалено"
       delivery_address: "Адреса доставки успішно видалена"
+      payment_card: "Картка успішно видалена"
 
   alert:
     cancan_access_denied: "Ви не маєте прав для доступу до цієї сторінки"
@@ -101,6 +104,7 @@ uk:
       product: "Додати товар"
       storehouse: "Додати на склад"
       delivery_address: "Додати адресу для доставки"
+      payment_card: "Додати картку"
     add_to_cart: "Додати в кошик"
     edit: "Редагувати"
     delete: "Видалити"
@@ -127,9 +131,11 @@ uk:
       title: "Профіль користувача"
       my_old_orders: "Мої покупки"
       old_cart: "Замовлення від"
-      old_carts_empty: "Немає історії покупок, але це легко виправити. Гайда до нових покупок!"
+      old_carts_empty: "Немає історії покупок, але це легко виправити. Гайда до покупок!"
       my_delivery_adress: "Мої адреси для доставки"
       delivery_addresses_empty: "Немає збережених адрес"
+      my_payment_cards: "Мої картки для оплати"
+      payment_cards_empty: "Немає збережених карток"
 
   devise:
     sessions:
@@ -280,3 +286,17 @@ uk:
       title: "Нова адреса для доставки"
     edit:
       title: "Редагувати адресу для доставки"
+
+  payment_cards:
+    form:
+      card_number: "Номер картки:"
+      expiry_month: "Термін дії (місяць):"
+      expiry_year: "Термін дії (рік):"
+      cvv: "CVC:"
+      placeholder:
+        card_number: "Введіть номер картки"
+        cvv: "введений код буде сховано"
+    new:
+      title: "Нова картка"
+    edit:
+      title: "Редагувати картку"

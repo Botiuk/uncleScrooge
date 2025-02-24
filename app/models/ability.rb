@@ -17,6 +17,9 @@ class Ability
     can :manage, DeliveryAddress do |delivery_address|
       delivery_address.user_id == user.id
     end
+    can :manage, PaymentCard do |payment_card|
+      payment_card.user_id == user.id
+    end
 
     return unless user.admin?
 

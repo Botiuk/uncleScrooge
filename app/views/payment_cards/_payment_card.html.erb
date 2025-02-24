@@ -1,0 +1,25 @@
+<div id="<%= dom_id payment_card %>">
+    <div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] mb-3">
+        <div class="p-4">
+            <div class="text-start font-medium leading-tight">
+                <%= payment_card.card_number.scan(/.{4}/).join(' ') %><br>
+                <% if payment_card.expiry_month.to_s.length == 1 %>
+                    <%= "0#{payment_card.expiry_month.to_s}" %>/<%= payment_card.expiry_year %>
+                <% else %>
+                    <%= payment_card.expiry_month %>/<%= payment_card.expiry_year %>
+                <% end %>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 px-4" data-turbo="true">
+            <div class="pb-2 text-start">
+                <% if can? :update, payment_card %>
+                    <%= link_to t('button.edit'), edit_payment_card_path(payment_card), class: "cursor-pointer bg-gray-300 hover:bg-gray-400 px-3 py-1 font-medium hover:text-gray-800 rounded-full shadow" %>
+                <% end %>                    
+                <% if can? :destroy, payment_card %>
+                    <%= button_to t('button.delete'), payment_card, method: :delete, data: { turbo_confirm: t('button.delete_confirm') }, class: "cursor-pointer bg-gray-300 hover:bg-gray-400 px-3 py-1 font-medium hover:text-gray-800 rounded-full shadow", form: {style: 'display:inline-block;'} %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
