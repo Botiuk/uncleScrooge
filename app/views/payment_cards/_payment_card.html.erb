@@ -3,11 +3,7 @@
         <div class="p-4">
             <div class="text-start font-medium leading-tight">
                 <%= payment_card.card_number.scan(/.{4}/).join(' ') %><br>
-                <% if payment_card.expiry_month.to_s.length == 1 %>
-                    <%= "0#{payment_card.expiry_month.to_s}" %>/<%= payment_card.expiry_year %>
-                <% else %>
-                    <%= payment_card.expiry_month %>/<%= payment_card.expiry_year %>
-                <% end %>
+                <%= payment_card.expiry_month %>/<%= payment_card.expiry_year %>
             </div>
         </div>
 

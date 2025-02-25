@@ -49,7 +49,7 @@ RSpec.describe PaymentCard do
       expect(payment_card).not_to be_valid
     end
 
-    it 'is not valid if expiry_month not number' do
+    it 'is not valid if expiry_month not only digit symbols' do
       payment_card = build(:payment_card, expiry_month: 'january')
       expect(payment_card).not_to be_valid
     end
@@ -64,18 +64,18 @@ RSpec.describe PaymentCard do
       expect(payment_card).not_to be_valid
     end
 
-    it 'is not valid if expiry_year not number' do
+    it 'is not valid if expiry_year not only digit symbols' do
       payment_card = build(:payment_card, expiry_year: 'year')
       expect(payment_card).not_to be_valid
     end
 
     it 'is not valid if expiry_year less than last two digit of current' do
-      payment_card = build(:payment_card, expiry_year: 11)
+      payment_card = build(:payment_card, expiry_year: (Time.zone.today.year - 2001))
       expect(payment_card).not_to be_valid
     end
 
-    it 'is not valid if expiry_year not two digit number' do
-      payment_card = build(:payment_card, expiry_year: 2025)
+    it 'is not valid if expiry_year not two digit' do
+      payment_card = build(:payment_card, expiry_year: Time.zone.today.year)
       expect(payment_card).not_to be_valid
     end
 
@@ -85,12 +85,12 @@ RSpec.describe PaymentCard do
       expect(payment_card).not_to be_valid
     end
 
-    it 'is not valid if cvv is not number' do
+    it 'is not valid if cvv is not not only digit symbols' do
       payment_card = build(:payment_card, cvv: '12a')
       expect(payment_card).not_to be_valid
     end
 
-    it 'is not valid if cvv is not 3 digit number' do
+    it 'is not valid if cvv is not 3 digit' do
       payment_card = build(:payment_card, cvv: 12)
       expect(payment_card).not_to be_valid
     end

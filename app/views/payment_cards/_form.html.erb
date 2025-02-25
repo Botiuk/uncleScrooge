@@ -14,12 +14,12 @@
         <div class="flex flex-wrap -mx-3">
             <div class="w-full md:w-1/3 px-3">
                 <%= form.label :expiry_month, t('.expiry_month'), class: "block tracking-wide font-semibold mb-2" %>
-                <%= form.number_field :expiry_month, value: form.object.expiry_month || nil, step: 1, min: 1, max: 12, class: "appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-200 focus:border-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" %>
+                <%= form.text_field :expiry_month, placeholder: t('.placeholder.expiry_month'), class: "appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-200 focus:border-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" %>
             </div>
 
             <div class="w-full md:w-1/3 px-3">
                 <%= form.label :expiry_year, t('.expiry_year'), class: "block tracking-wide font-semibold mb-2" %>
-                <%= form.number_field :expiry_year, value: form.object.expiry_year || nil, step: 1, min: (Time.zone.today.year - 2000), max: 99, class: "appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-200 focus:border-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" %>
+                <%= form.text_field :expiry_year, placeholder: t('.placeholder.expiry_year'), class: "appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-200 focus:border-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" %>
             </div>
 
             <div class="w-full md:w-1/3 px-3">
