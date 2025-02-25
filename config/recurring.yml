@@ -14,9 +14,17 @@ development:
     class: CartsCleanupJob
     queue: background
     schedule: every 3 minutes
+  periodic_cleanup:
+    class: CleanExpiryPaymentCardJob
+    queue: background
+    schedule: every 2 hours
 
 production:
   periodic_cleanup:
     class: CartsCleanupJob
     queue: background
     schedule: every day at midnight
+  periodic_cleanup:
+    class: CleanExpiryPaymentCardJob
+    queue: background
+    schedule: every 1 months
