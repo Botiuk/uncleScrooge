@@ -17,7 +17,7 @@ gem 'turbo-rails', '2.0.11'
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem 'stimulus-rails', '1.3.4'
 # Bundle and process CSS [https://github.com/rails/cssbundling-rails]
-gem 'cssbundling-rails', '1.4.1'
+gem 'cssbundling-rails', '1.4.2'
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 gem 'bcrypt', '3.1.20'

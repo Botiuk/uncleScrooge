@@ -47,7 +47,13 @@ uk:
         card_number: "Номер картки"
         expiry_month: "Картка дійсна до (місяць)"
         expiry_year: "Картка дійсна до (рік)"
-        cvv: "CVV-код"
+        cvv: "CVC-код"
+      storehouse:
+        order_status: "Статус замовлення"
+        order_statuses:
+          active: "нове"
+          complecting: "збирається"
+          sended: "надіслано"
   
   validation:
     ancestry:
