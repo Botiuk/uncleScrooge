@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_26_083726) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_26_094814) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -101,6 +101,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_26_083726) do
     t.index ["user_id"], name: "index_delivery_addresses_on_user_id"
   end
 
+  create_table "order_items", force: :cascade do |t|
+    t.decimal "product_price", precision: 8, scale: 2, null: false
+    t.bigint "order_id", null: false
+    t.bigint "storehouse_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+    t.index ["storehouse_id"], name: "index_order_items_on_storehouse_id"
+  end
+
   create_table "orders", force: :cascade do |t|
     t.integer "order_status", default: 0, null: false
     t.decimal "order_price", precision: 8, scale: 2, null: false
@@ -170,6 +180,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_26_083726) do
   add_foreign_key "delivery_address_orders", "delivery_addresses"
   add_foreign_key "delivery_address_orders", "orders"
   add_foreign_key "delivery_addresses", "users"
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "order_items", "storehouses"
   add_foreign_key "orders", "carts"
   add_foreign_key "payment_card_orders", "orders"
   add_foreign_key "payment_card_orders", "payment_cards"
