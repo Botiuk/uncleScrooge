@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_26_073431) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_26_083726) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -79,6 +79,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_26_073431) do
     t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
+  create_table "delivery_address_orders", force: :cascade do |t|
+    t.bigint "delivery_address_id", null: false
+    t.bigint "order_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["delivery_address_id"], name: "index_delivery_address_orders_on_delivery_address_id"
+    t.index ["order_id"], name: "index_delivery_address_orders_on_order_id"
+  end
+
   create_table "delivery_addresses", force: :cascade do |t|
     t.integer "post_service", null: false
     t.string "country", null: false
@@ -99,6 +108,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_26_073431) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cart_id"], name: "index_orders_on_cart_id"
+  end
+
+  create_table "payment_card_orders", force: :cascade do |t|
+    t.bigint "payment_card_id", null: false
+    t.bigint "order_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_payment_card_orders_on_order_id"
+    t.index ["payment_card_id"], name: "index_payment_card_orders_on_payment_card_id"
   end
 
   create_table "payment_cards", force: :cascade do |t|
@@ -149,8 +167,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_26_073431) do
   add_foreign_key "cart_storehouses", "carts"
   add_foreign_key "cart_storehouses", "storehouses"
   add_foreign_key "carts", "users"
+  add_foreign_key "delivery_address_orders", "delivery_addresses"
+  add_foreign_key "delivery_address_orders", "orders"
   add_foreign_key "delivery_addresses", "users"
   add_foreign_key "orders", "carts"
+  add_foreign_key "payment_card_orders", "orders"
+  add_foreign_key "payment_card_orders", "payment_cards"
   add_foreign_key "payment_cards", "users"
   add_foreign_key "products", "categories"
   add_foreign_key "storehouses", "products"

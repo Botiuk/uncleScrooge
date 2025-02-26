@@ -4,6 +4,7 @@ class PaymentCard < ApplicationRecord
   before_validation :clean_card_number
 
   belongs_to :user
+  has_many :payment_card_order, dependent: :destroy
 
   validates :card_number, :expiry_month, :expiry_year, :cvv,
             presence: true,
