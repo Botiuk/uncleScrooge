@@ -33,6 +33,7 @@ uk:
           input: "внесення"
           cart: "кошик"
           paided: "оплачено"
+          sended: "надіслано"
       delivery_address:
         post_service: "Поштовий оператор"
         post_services:
@@ -48,7 +49,7 @@ uk:
         expiry_month: "Картка дійсна до (місяць)"
         expiry_year: "Картка дійсна до (рік)"
         cvv: "CVC-код"
-      storehouse:
+      order:
         order_status: "Статус замовлення"
         order_statuses:
           active: "нове"
@@ -73,12 +74,14 @@ uk:
       product_to_cart: "Товар у кошик успішно додано"
       delivery_address: "Адреса доставки успішно додана"
       payment_card: "Картка успішно додана"
+      order: "Замовлення успішно створено"
     update:
       category: "Категорія успішно оновлена"
       product: "Товар успішно оновлено"
       storehouse: "Товар на складі успішно оновлено"
       delivery_address: "Адреса доставки успішно оновлена"
       payment_card: "Картка успішно оновлена"
+      order: "Замовлення успішно оновлено"
     destroy:
       category: "Категорія успішно видалена"
       storehouse: "Товар зі складу успішно видалено"
@@ -113,6 +116,7 @@ uk:
       storehouse: "Додати на склад"
       delivery_address: "Додати адресу для доставки"
       payment_card: "Додати картку"
+      order: "Оформити замовлення"
     add_to_cart: "Додати в кошик"
     edit: "Редагувати"
     delete: "Видалити"
@@ -128,6 +132,7 @@ uk:
     storehouse: "Склад"
     login: "Ввійти"
     edit_user_registration: "Редагувати профіль"
+    orders: "Замовлення"
 
   main:
     index:
@@ -137,9 +142,10 @@ uk:
       title: "Наші контакти"
     user_profile:
       title: "Профіль користувача"
-      my_old_orders: "Мої покупки"
-      old_cart: "Замовлення від"
-      old_carts_empty: "Немає історії покупок, але це легко виправити. Гайда до покупок!"
+      my_orders: "Мої покупки"
+      order_date: "Замовлення від"
+      order_price: "нас суму"
+      orders_empty: "Немає історії покупок, але це легко виправити. Гайда до покупок!"
       my_delivery_adress: "Мої адреси для доставки"
       delivery_addresses_empty: "Немає збережених адрес"
       my_payment_cards: "Мої картки для оплати"
@@ -251,10 +257,11 @@ uk:
       title: "Редагувати товар на складі"
     search:
       title: "Результати пошуку операцій по складу для товару"
-      not_sale: "Не продано, шт."
+      remainder: "Залишок, шт."
       input:  "Внесено на склад, шт."
       cart: "Кошик, шт."
       paided: "Оплачено, шт."
+      sended: "Відправлено, шт."
       operation_list: "Список операцій"
       product_name: "Назва товару"
       quantity: "Кількість"
@@ -264,7 +271,6 @@ uk:
   carts:
     show:
       title: "Кошик"
-      title_old_cart: "Замовлення від"
       product_name: "Назва товару"
       price: "Ціна"
       quantity: "Кількість, шт."
@@ -310,3 +316,29 @@ uk:
       title: "Нова картка"
     edit:
       title: "Редагувати картку"
+  
+  orders:
+    index:
+      title: "Замовлення"
+      order_number: "Номер"
+      order_price: "Ціна замовлення"
+      order_status: "Статус замовлення"
+      date: "Дата створення"
+    form:
+      delivery_address_id: "Адреса доставки:"
+      payment_card_id: "Номер картки:"
+      order_status: "Статус замовлення:"
+      prompt:
+        delivery_address_id: "- виберіть адресу для доставки -"
+        payment_card_id: "- виберіть номер картки -"
+    new:
+      title: "Нова замовлення"
+    edit:
+      title: "Редагувати замовлення"
+    show:
+      title: "Замовлення від"
+      product_name: "Назва товару"
+      price: "Ціна"
+      quantity: "Кількість, шт."
+      sum: "Сума"
+      order_total_price: "Загалом:"

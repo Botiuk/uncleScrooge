@@ -11,13 +11,15 @@
                 <th class="p-3"><%= t('.input') %></th>
                 <th class="p-3"><%= t('.cart') %></th>
                 <th class="p-3"><%= t('.paided') %></th>
-                <th class="p-3"><%= t('.not_sale') %></th>
+                <th class="p-3"><%= t('.sended') %></th>
+                <th class="p-3"><%= t('.remainder') %></th>
             </tr>
             <tr class="odd:bg-gray-100 even:bg-white border text-center">
                 <td class="p-3"><%= @product_input %></td>
                 <td class="p-3"><%= @product_cart %></td>
                 <td class="p-3"><%= @product_paided %></td>
-                <td class="p-3"><%= @product_input - @product_paided %></td>
+                <td class="p-3"><%= @product_sended %></td>
+                <td class="p-3"><%= @product_input - @product_sended %></td>
             </tr>
         </tbody>
     </table>

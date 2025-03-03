@@ -1,0 +1,30 @@
+<tr id="<%= dom_id order %>" class="odd:bg-gray-100 even:bg-white border text-center">
+    <td class="p-3 text-start">
+        <%= order.id %>
+    </td>
+    <td class="p-3">
+        <%= order.order_price %>
+    </td>
+    <% if order.order_status == "active" %>
+        <td class="font-bold text-red-500 p-3">
+    <% elsif order.order_status == "complecting" %>
+        <td class="font-bold text-green-500 p-3">
+    <% else %>
+        <td class="p-3">
+    <% end %>
+            <%= Order.human_enum_name(:order_status, order.order_status) %>
+        </td>
+    <td class="p-3">
+        <%= I18n.l(order.created_at, format: :long) %>
+    </td>
+    <td class="p-3">
+        <% if (can? :update, Order) && order.order_status != "sended" %>
+            <%= link_to t('button.edit'), edit_order_path(order), class: "cursor-pointer bg-gray-300 hover:bg-gray-400 px-3 py-1 font-medium hover:text-gray-800 rounded-full shadow" %>
+        <% end %>
+    </td>
+    <td class="p-3">
+        <% if can? :show, Order %>
+            <%= link_to t('button.show'), order, class: "cursor-pointer bg-gray-300 hover:bg-gray-400 px-3 py-1 font-medium hover:text-gray-800 rounded-full shadow" %>
+        <% end %>
+    </td>
+</tr>

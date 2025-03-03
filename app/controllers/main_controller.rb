@@ -13,7 +13,7 @@ class MainController < ApplicationController
   def contacts; end
 
   def user_profile
-    @old_carts = Cart.where(user_id: current_user.id, cart_status: 'paided').order(updated_at: :desc)
+    @orders = Order.joins(:cart).where(carts: { user_id: current_user.id }).order(created_at: :desc)
     @delivery_addresses = DeliveryAddress.where(user_id: current_user.id)
     @payment_cards = PaymentCard.where(user_id: current_user.id)
   end

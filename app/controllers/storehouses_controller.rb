@@ -59,6 +59,7 @@ class StorehousesController < ApplicationController
     @product_input = Storehouse.count_product_by_operation_type(product_id, 'input')
     @product_cart = Storehouse.count_product_by_operation_type(product_id, 'cart')
     @product_paided = Storehouse.count_product_by_operation_type(product_id, 'paided')
+    @product_sended = Storehouse.count_product_by_operation_type(product_id, 'sended')
   end
 
   def set_storehouse

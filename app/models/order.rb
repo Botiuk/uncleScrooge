@@ -6,7 +6,10 @@ class Order < ApplicationRecord
   has_one :payment_card_order, dependent: nil
   has_many :order_items, dependent: nil
 
+  accepts_nested_attributes_for :delivery_address_order, :payment_card_order
+
   enum :order_status, { active: 0, complecting: 1, sended: 2 }, default: :active
 
   validates :order_price, presence: true
+  validates_associated :delivery_address_order, :payment_card_order
 end

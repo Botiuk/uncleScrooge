@@ -7,7 +7,7 @@ class Storehouse < ApplicationRecord
   has_one :cart, through: :cart_storehouse, dependent: nil
   has_one :order_item, dependent: nil
 
-  enum :operation_type, { input: 0, cart: 1, paided: 2 }
+  enum :operation_type, { input: 0, cart: 1, paided: 2, sended: 3 }
 
   validates :operation_type, :quantity, presence: true
   validates :quantity, numericality: { only_integer: true, greater_than: 0 }
@@ -18,7 +18,7 @@ class Storehouse < ApplicationRecord
 
   def self.count_avaliable_product(product_id)
     product_input = Storehouse.count_product_by_operation_type(product_id, 'input')
-    product_output = Storehouse.count_product_by_operation_type(product_id, %w[cart paided])
+    product_output = Storehouse.count_product_by_operation_type(product_id, %w[cart paided sended])
     product_input - product_output
   end
 end

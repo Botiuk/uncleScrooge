@@ -9,21 +9,26 @@
 
 <div class="grid grid-cols-1 mb-3">
     <div class="text-start text-lg font-semibold leading-none">
-        <%= t('.my_old_orders') %>
+        <%= t('.my_orders') %>
     </div>
 </div>
 
-<% if @old_carts.present? %>
-    <div class="grid grid-cols-1 mb-3">
-        <% @old_carts.each do |old_cart| %>
-            <%= link_to old_cart do %>
-                <%= t('.old_cart') %> <%= I18n.l(@cart.updated_at, format: :long_reverse) %>
+<% if @orders.present? %>
+    <div class="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-3 mb-3">
+        <% @orders.each do |order| %>
+            <%= link_to order do %>
+                <div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] mb-3" >
+                    <div class="p-4">
+                        <%= t('.order_date') %> <%= I18n.l(order.created_at, format: :long_reverse) %>
+                        <%= t('.order_price') %> <%= number_to_currency(order.order_price) %>
+                    </div>
+                </div>
             <% end %>
         <% end %>
     </div>
 <% else %>
     <div class="mb-3">
-        <%= t('.old_carts_empty') %>
+        <%= t('.orders_empty') %>
     </div>
 <% end %>
 
@@ -37,7 +42,7 @@
 </div>
 
 <% if @delivery_addresses.present? %>
-    <div class="grid grid-cols-1 mb-3">
+    <div class="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-3 mb-3">
         <% @delivery_addresses.each do |delivery_address| %>
             <%= render 'delivery_addresses/delivery_address', delivery_address: delivery_address %>
         <% end %>
@@ -58,7 +63,7 @@
 </div>
 
 <% if @payment_cards.present? %>
-    <div class="grid grid-cols-1 mb-3">
+    <div class="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-3 mb-3">
         <% @payment_cards.each do |payment_card| %>
             <%= render 'payment_cards/payment_card', payment_card: payment_card %>
         <% end %>

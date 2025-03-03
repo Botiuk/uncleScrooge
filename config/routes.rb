@@ -30,4 +30,5 @@ Rails.application.routes.draw do
   resources :carts, only: %i[show destroy]
   resources :delivery_addresses, except: %i[index show]
   resources :payment_cards, except: %i[index show]
+  resources :orders, except: :destroy
 end

@@ -20,6 +20,10 @@ class Ability
     can :manage, PaymentCard do |payment_card|
       payment_card.user_id == user.id
     end
+    can :show, Order do |order|
+      order.cart.user_id == user.id
+    end
+    can :create, Order
 
     return unless user.admin?
 
@@ -30,5 +34,6 @@ class Ability
     can %i[update destroy], Storehouse do |storehouse|
       storehouse.operation_type == 'input'
     end
+    can %i[read update], Order
   end
 end

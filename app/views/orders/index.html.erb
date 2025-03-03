@@ -1,0 +1,26 @@
+<div class="grid grid-cols-1 mb-3">
+    <div class="text-start text-xl font-semibold leading-none">
+        <%= t('.title') %>
+    </div>
+</div>
+
+<% if @orders.present? %>
+    <div class="py-4 overflow-x-auto" data-turbo="true">
+        <table class="w-full text-sm text-left rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
+            <tbody>
+                <tr class="bg-gray-100 border text-center">
+                    <th class="p-3"><%= t('.order_number') %></th>
+                    <th class="p-3"><%= t('.order_price') %></th>
+                    <th class="p-3"><%= t('.order_status') %></th>
+                    <th class="p-3"><%= t('.date') %></th>
+                    <th colspan="2"></th>
+                </tr>
+                <% @orders.each do |order| %>
+                    <%= render order %>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+<% end %>
+
+<%= render 'shared/pagy' %>

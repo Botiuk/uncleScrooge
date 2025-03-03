@@ -1,10 +1,6 @@
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3" >
     <div class="text-start text-xl font-semibold leading-none">
-        <% if @cart.cart_status == 'active' %>
-            <%= t('.title') %>
-        <% else %>
-            <%= t('.title_old_cart') %> <%= I18n.l(@cart.updated_at, format: :long_reverse) %>
-        <% end %>
+        <%= t('.title') %>
     </div>
 
     <% if (can? :destroy, @cart) && (@cart.cart_status == 'active') && (@cart.expiration_time > DateTime.current) && @storehouses.present? %>
@@ -14,7 +10,7 @@
     <% end %>
 </div>
 
-<% if (@storehouses.present? && (@cart.expiration_time > DateTime.current)) || @cart.cart_status == 'paided' %>
+<% if @storehouses.present? && (@cart.expiration_time > DateTime.current) %>
     <div class="py-4 overflow-x-auto" data-turbo="true">
         <table class="w-full text-sm text-left rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
             <tbody>
@@ -23,9 +19,7 @@
                     <th class="p-3"><%= t('.price') %></th>
                     <th class="p-3"><%= t('.quantity') %></th>
                     <th class="p-3"><%= t('.sum') %></th>
-                    <% if @cart.cart_status == 'active' %>
-                        <th class="p-3"><%= t('.delete_from_cart') %></th>
-                    <% end %>
+                    <th class="p-3"><%= t('.delete_from_cart') %></th>
                 </tr>
                 <% @storehouses.each do |storehouse| %>
                     <tr id="<%= dom_id storehouse %>" class="odd:bg-gray-100 even:bg-white border text-center">
@@ -37,26 +31,22 @@
                         </td>
                         <td class="p-3">
                             <div class="flex items-center justify-center my-auto">
-                                <% if @cart.cart_status == 'active' %>
-                                    <%= form_with(url: minus_one_item_path) do |form| %>
-                                        <%= form.hidden_field :id, value: storehouse.id %>
-                                        <%= form.button nil, class: "cursor-pointer py-1 font-medium hover:text-gray-900" do %>
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                            </svg>
-                                        <% end %>
+                                <%= form_with(url: minus_one_item_path) do |form| %>
+                                    <%= form.hidden_field :id, value: storehouse.id %>
+                                    <%= form.button nil, class: "cursor-pointer py-1 font-medium hover:text-gray-900" do %>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                        </svg>
                                     <% end %>
                                 <% end %>
                                 <span class="mx-2"><%= storehouse.quantity %></span>
-                                <% if @cart.cart_status == 'active' %>
-                                    <%= form_with(url: plus_one_item_path) do |form| %>
-                                        <%= form.hidden_field :id, value: storehouse.id %>
-                                        <%= form.hidden_field :product_id, value: storehouse.product_id %>
-                                        <%= form.button nil, class: "cursor-pointer py-1 font-medium hover:text-gray-900" do %>
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                            </svg>
-                                        <% end %>
+                                <%= form_with(url: plus_one_item_path) do |form| %>
+                                    <%= form.hidden_field :id, value: storehouse.id %>
+                                    <%= form.hidden_field :product_id, value: storehouse.product_id %>
+                                    <%= form.button nil, class: "cursor-pointer py-1 font-medium hover:text-gray-900" do %>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                        </svg>
                                     <% end %>
                                 <% end %>
                             </div>
@@ -64,16 +54,14 @@
                         <td class="p-3">
                             <%= number_to_currency(storehouse.quantity * storehouse.product.price) %>
                         </td>
-                        <% if @cart.cart_status == 'active' %>
-                            <td class="p-3">
-                                <%= form_with(url: remove_from_cart_path) do |form| %>
-                                    <%= form.hidden_field :id, value: storehouse.id %>
-                                    <%= form.button nil, class: "cursor-pointer bg-gray-300 hover:bg-gray-400 px-3 py-1 font-medium hover:text-gray-800 rounded-full shadow" do %>
-                                        X
-                                    <% end %>
+                        <td class="p-3">
+                            <%= form_with(url: remove_from_cart_path) do |form| %>
+                                <%= form.hidden_field :id, value: storehouse.id %>
+                                <%= form.button nil, class: "cursor-pointer bg-gray-300 hover:bg-gray-400 px-3 py-1 font-medium hover:text-gray-800 rounded-full shadow" do %>
+                                    X
                                 <% end %>
-                            </td>
-                        <% end %>
+                            <% end %>
+                        </td>
                     </tr>
                 <% end %>
                 <tr class="odd:bg-gray-100 even:bg-white border text-center">
@@ -81,23 +69,27 @@
                     <th></th>
                     <th class="p-3"><%= @cart_items %></th>
                     <th class="p-3"><%= number_to_currency(@cart_price) %></th>
-                    <% if @cart.cart_status == 'active' %>
-                        <th></th>
-                    <% end %>
+                    <th></th>
                 </tr>
             </tbody>
         </table>
     </div>
 
-    <% if @cart.cart_status == 'active' %>
-        <div class="grid grid-cols-1 mb-3">
-            <div class="text-start font-semibold leading-none">
-                <%= t('.expiration_date') %>: <%= I18n.l(@cart.expiration_time, format: :long) %>
-            </div>
+    <div class="grid grid-cols-1 mb-3">
+        <div class="text-start font-semibold leading-none">
+            <%= t('.expiration_date') %>: <%= I18n.l(@cart.expiration_time, format: :long) %>
         </div>
-    <% end %>
+    </div>
 
     <%= render 'shared/pagy' %>
 <% else %>
     <%= t('.cart_empty') %>
+<% end %>
+
+<% if @storehouses.present? && (@cart.expiration_time > DateTime.current) %>
+    <div class="grid grid-cols-1 mb-3">
+        <div class="text-end my-auto">
+            <%= link_to t('button.add.order'), new_order_path(order_price: @cart_price), method: :post, class: "cursor-pointer bg-gray-300 hover:bg-gray-400 px-3 py-1 font-medium hover:text-gray-800 rounded-full shadow" %>
+        </div>
+    </div>
 <% end %>
