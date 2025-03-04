@@ -31,4 +31,8 @@ Rails.application.routes.draw do
   resources :delivery_addresses, except: %i[index show]
   resources :payment_cards, except: %i[index show]
   resources :orders, except: :destroy
+
+  authenticated :user do
+    mount MissionControl::Jobs::Engine, at: '/jobs'
+  end
 end

@@ -13,11 +13,11 @@ gem 'puma', '6.6.0'
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
 gem 'jsbundling-rails', '1.3.1'
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem 'turbo-rails', '2.0.11'
+gem 'turbo-rails', '2.0.13'
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem 'stimulus-rails', '1.3.4'
 # Bundle and process CSS [https://github.com/rails/cssbundling-rails]
-gem 'cssbundling-rails', '1.4.2'
+gem 'cssbundling-rails', '1.4.3'
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 gem 'bcrypt', '3.1.20'
@@ -34,7 +34,7 @@ gem 'solid_queue', '1.1.3'
 gem 'bootsnap', '1.18.4', require: false
 
 # Deploy this application anywhere as a Docker container [https://kamal-deploy.org]
-gem 'kamal', '2.5.2', require: false
+gem 'kamal', '2.5.3', require: false
 
 # Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
 gem 'thruster', '0.1.11', require: false
@@ -60,6 +60,9 @@ gem 'ancestry', '4.3.3'
 # Agnostic pagination in plain ruby
 gem 'pagy', '9.3.3'
 
+# Operational controls for Active Job
+gem 'mission_control-jobs', '1.0.2'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', '1.10.0', platforms: %i[mri windows], require: 'debug/prelude'
@@ -80,9 +83,9 @@ group :development do
   gem 'brakeman', '7.0.0', require: false
 
   # RuboCop is a Ruby code style checking and code formatting tool.
-  gem 'rubocop', '1.73.0', require: false
+  gem 'rubocop', '1.73.2', require: false
   # Automatic Rails code style checking tool.
-  gem 'rubocop-rails', '2.30.2', require: false
+  gem 'rubocop-rails', '2.30.3', require: false
   # A collection of RuboCop cops to check for performance optimizations in Ruby code.
   gem 'rubocop-performance', '1.24.0', require: false
   # Code style checking for RSpec files

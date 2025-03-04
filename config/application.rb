@@ -52,5 +52,8 @@ module UncleScrooge
 
     # Beginning of week
     config.beginning_of_week = :monday
+
+    # Disable the default HTTP Basic Authentication for Mission Control's
+    config.mission_control.jobs.http_basic_auth_enabled = false
   end
 end
