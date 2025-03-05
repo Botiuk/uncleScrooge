@@ -54,7 +54,17 @@ uk:
         order_statuses:
           active: "нове"
           complecting: "збирається"
-          sended: "надіслано"
+          sended: "надіслано"        
+        delivery_address_order: "Адреса доставки"
+        payment_card_order: "Номер картки"
+      delivery_address_order:
+        delivery_address: "Поле 'Адреса доставки'"
+      payment_card_order: 
+        payment_card: "Номер картки"
+
+  errors:
+    messages:
+      invalid: "не має значення"
   
   validation:
     ancestry:
@@ -331,14 +341,18 @@ uk:
       prompt:
         delivery_address_id: "- виберіть адресу для доставки -"
         payment_card_id: "- виберіть номер картки -"
+      without_adress: "В профілі не збережена жодна адреса для доставки"
+      without_card: "В профілі не збережена жодна платіжна картка"
     new:
-      title: "Нова замовлення"
+      title: "Нове замовлення"
     edit:
-      title: "Редагувати замовлення"
+      title: "Редагувати замовлення"      
     show:
       title: "Замовлення від"
+    show_order:
       product_name: "Назва товару"
       price: "Ціна"
       quantity: "Кількість, шт."
       sum: "Сума"
       order_total_price: "Загалом:"
+      delivery_address: "Доставка:"

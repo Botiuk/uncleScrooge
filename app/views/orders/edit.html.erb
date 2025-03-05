@@ -1,3 +1,5 @@
-<div class="text-start text-xl font-semibold leading-none mb-3"><%= t('.title') %></div>
+<div class="text-start text-xl font-semibold leading-none mb-3"><%= t('.title') %> №<%= @order.id %></div>
+
+<%= render 'show_order' %>
 
 <%= render "form", order: @order %>

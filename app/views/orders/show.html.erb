@@ -4,55 +4,7 @@
     </div>
 </div>
 
-<div class="py-4 overflow-x-auto" data-turbo="true">
-    <table class="w-full text-sm text-left rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
-        <tbody>
-            <tr class="bg-gray-100 border text-center">
-                <th class="p-3"><%= t('.product_name') %></th>
-                <th class="p-3"><%= t('.price') %></th>
-                <th class="p-3"><%= t('.quantity') %></th>
-                <th class="p-3"><%= t('.sum') %></th>
-            </tr>
-            <% @order_items.each do |order_item| %>
-                <tr id="<%= dom_id order_item %>" class="odd:bg-gray-100 even:bg-white border text-center">
-                    <td class="p-3 text-start">
-                        <%= link_to order_item.storehouse.product.name, order_item.storehouse.product %>
-                    </td>
-                    <td class="p-3">
-                        <%= number_to_currency(order_item.product_price) %>
-                    </td>
-                    <td class="p-3">
-                        <%= order_item.storehouse.quantity %>
-                    </td>
-                    <td class="p-3">
-                        <%= number_to_currency(order_item.storehouse.quantity * order_item.product_price) %>
-                    </td>
-                </tr>
-            <% end %>
-            <tr class="odd:bg-gray-100 even:bg-white border text-center">
-                <th class="p-3 text-start"><%= t('.order_total_price') %></th>
-                <th></th>
-                <th class="p-3"></th>
-                <th class="p-3"><%= number_to_currency(@order.order_price) %></th>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-<%= render 'shared/pagy' %>
-
-<% if @delivery_address.present? %>
-    <div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] mb-3">
-        <div class="p-4">
-            <div class="text-start font-medium leading-tight">
-                <%= DeliveryAddress.human_enum_name(:post_service, @delivery_address.post_service) %><br>
-                <%= @delivery_address.country %><br>
-                <%= @delivery_address.locality %>, <%= @delivery_address.address %><br>
-                <%= @delivery_address.personal_name %>, <%= @delivery_address.phone %>
-            </div>
-        </div>
-    </div>
-<% end %>
+<%= render 'show_order' %>
 
 <% if (can? :update, Order) && @order.order_status != "sended" %>
     <div class="grid grid-cols-1 mb-3">

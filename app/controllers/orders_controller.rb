@@ -3,18 +3,14 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: %i[edit update show]
   before_action :my_formhelper, only: %i[new create edit update]
+  before_action :order_details, only: %i[show edit]
   authorize_resource
 
   def index
     @pagy, @orders = pagy(Order.order(created_at: :desc), limit: 30)
   end
 
-  def show
-    @pagy, @order_items = pagy(OrderItem.includes(:storehouse).where(order_id: @order.id), limit: 30)
-    @delivery_address = @order.delivery_address_order.delivery_address if @order.delivery_address_order.present?
-  rescue Pagy::OverflowError
-    redirect_to @order
-  end
+  def show; end
 
   def new
     @order = Order.new
@@ -48,6 +44,13 @@ class OrdersController < ApplicationController
   def my_formhelper
     @delivery_addresses = DeliveryAddress.where(user_id: current_user.id).pluck(:address, :id)
     @payment_cards = PaymentCard.where(user_id: current_user.id).pluck(:card_number, :id)
+  end
+
+  def order_details
+    @pagy, @order_items = pagy(OrderItem.includes(:storehouse).where(order_id: @order.id), limit: 30)
+    @delivery_address = @order.delivery_address_order.delivery_address if @order.delivery_address_order.present?
+  rescue Pagy::OverflowError
+    redirect_to @order
   end
 
   def create_joins_records

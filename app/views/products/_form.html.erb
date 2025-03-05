@@ -17,7 +17,7 @@
 
             <div class="w-full md:w-1/2 px-3">
                 <%= form.label :category_id, t('.category_id'), class: "block tracking-wide font-semibold mb-2" %>
-                <%= select(:product, :category_id, options_for_select(@categories, selected: form.object.category_id), {prompt: t('.prompt.category')}, {class: "appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-200 focus:border-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"}) %>
+                <%= form.select :category_id, options_for_select(@categories, selected: form.object.category_id), {prompt: t('.prompt.category')}, {class: "appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-200 focus:border-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"} %>
             </div>
         </div>
 

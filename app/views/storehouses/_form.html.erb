@@ -7,7 +7,7 @@
         <div class="flex flex-wrap -mx-3">
             <div class="w-full md:w-1/2 px-3">
                 <%= form.label :product_id, t('.product_id'), class: "block tracking-wide font-semibold mb-2" %>
-                <%= select(:storehouse, :product_id, options_for_select(@products, selected: form.object.product_id || params[:product_id]), {prompt: t('.prompt.product')}, {class: "appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-200 focus:border-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"}) %>
+                <%= form.select :product_id, options_for_select(@products, selected: form.object.product_id || params[:product_id]), {prompt: t('.prompt.product')}, {class: "appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-200 focus:border-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"} %>
             </div>
 
             <div class="w-full md:w-1/2 px-3">
