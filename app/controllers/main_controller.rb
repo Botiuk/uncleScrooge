@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class MainController < ApplicationController
-  skip_before_action :authenticate_user!, except: :user_profile
+  skip_before_action :authenticate_user!, only: %i[index contacts]
   authorize_resource class: false
 
   def index
