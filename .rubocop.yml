@@ -4,9 +4,9 @@ plugins:
   - rubocop-rails
   - rubocop-performance
   - rubocop-rspec
+  - rubocop-factory_bot
 
 require:
-  - rubocop-factory_bot
   - rubocop-rspec_rails
 
 AllCops:
