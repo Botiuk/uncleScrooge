@@ -17,10 +17,12 @@
     <div class="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-3 mb-3">
         <% @orders.each do |order| %>
             <%= link_to order do %>
-                <div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] mb-3" >
+                <div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] mb-3">
                     <div class="p-4">
-                        <%= t('.order_date') %> <%= I18n.l(order.created_at, format: :long_reverse) %>
-                        <%= t('.order_price') %> <%= number_to_currency(order.order_price) %>
+                        <%= t('.order_number') %> <%= order.id %><br>
+                        <%= t('.order_date') %> <%= I18n.l(order.created_at, format: :long_reverse) %><br>
+                        <%= t('.order_price') %> <%= number_to_currency(order.order_price) %><br>
+                        <%= t('.order_status') %> <%= Order.human_enum_name(:order_status, order.order_status) %><br>
                     </div>
                 </div>
             <% end %>

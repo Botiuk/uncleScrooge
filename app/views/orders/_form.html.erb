@@ -22,14 +22,46 @@
                             <%= payment_form.select :payment_card_id, options_for_select(@payment_cards), {prompt: t('.prompt.payment_card_id')}, {class: "appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-200 focus:border-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"} %>
                         </div>
                     <% end %>
+
+                    <div class="w-full md:w-1/2 px-3">
+                        <%= form.label :phone_call, t('.phone_call.label'), class: "block tracking-wide font-semibold mb-2" %>
+                        <div class="text-center">
+                            <%= form.radio_button :phone_call, "not_need", checked: ((form.object.phone_call == "not_need") || (form.object.phone_call == nil)), class: "hover:cursor-pointer" %>
+                            <%= form.label :phone_call_not_need, t('.phone_call.not_need'), class: "mt-px inline-block ps-[0.15rem] hover:cursor-pointer pe-4" %>
+                            <%= form.radio_button :phone_call, "please_call", checked: (form.object.phone_call == "please_call"), class: "hover:cursor-pointer" %>
+                            <%= form.label :phone_call_please_call, t('.phone_call.please_call'), class: "mt-px inline-block ps-[0.15rem] hover:cursor-pointer pe" %>
+                        </div>
+                    </div>
+
+                    <div class="w-full md:w-1/2 px-3">
+                        <%= form.label :message, t('.message'), class: "block tracking-wide font-semibold mb-2" %>
+                        <%= form.textarea :message, placeholder: t('.placeholder.message'), class: "appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-200 focus:border-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" %>
+                    </div>
                 </div>
             <% end %>
 
-            <% if can? :update, Order %>
+            <% if (can? :update, Order) && @delivery_address.present? %>
                 <div class="flex flex-wrap -mx-3">
-                    <div class="w-full px-3">
+                    <div class="w-full  md:w-1/2 px-3">
                         <%= form.label :order_status, t('.order_status'), class: "block tracking-wide font-semibold mb-2" %>
                         <%= form.select :order_status, Order.order_statuses.keys.map{ |key| [Order.human_enum_name(:order_status, key), key] }, {prompt: t('.prompt.order_status'), selected: form.object.order_status}, {class: "appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-200 focus:border-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"} %>
+                    </div>
+
+                    <div class="w-full  md:w-1/2 px-3">
+                        <%= form.label :phone_call_status, t('.phone_call_status.label'), class: "block tracking-wide font-semibold mb-2" %>
+                        <div class="text-center">
+                            <%= form.radio_button :phone_call_status, "not_avaliable", checked: ((form.object.phone_call_status == "not_avaliable") ||( form.object.phone_call_status == nil)), disabled: true, class: "hover:cursor-pointer" %>
+                            <%= form.label :phone_call_status_not_avaliable, t('.phone_call_status.not_avaliable'), class: "mt-px inline-block opacity-50 ps-[0.15rem] hover:cursor-pointer pe-4" %>
+                            <%= form.radio_button :phone_call_status, "wait", checked: (form.object.phone_call_status == "wait"), disabled: (form.object.phone_call_status == "not_avaliable"), class: "hover:cursor-pointer" %>
+                            <%= form.label :phone_call_status_wait, t('.phone_call_status.wait'), class: "mt-px inline-block ps-[0.15rem] hover:cursor-pointer pe-4" %>
+                            <%= form.radio_button :phone_call_status, "did_call", checked: (form.object.phone_call_status == "did_call"), disabled: (form.object.phone_call_status == "not_avaliable"), class: "hover:cursor-pointer" %>
+                            <%= form.label :phone_call_status_did_call, t('.phone_call_status.did_call'), class: "mt-px inline-block ps-[0.15rem] hover:cursor-pointer" %>
+                        </div>
+                    </div>
+
+                    <div class="w-full px-3">
+                        <%= form.label :notation, t('.notation'), class: "block tracking-wide font-semibold mb-2" %>
+                        <%= form.textarea :notation, placeholder: t('.placeholder.notation'), class: "appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-200 focus:border-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" %>
                     </div>
                 </div>
             <% end %>

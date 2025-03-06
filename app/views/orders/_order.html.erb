@@ -5,6 +5,7 @@
     <td class="p-3">
         <%= order.order_price %>
     </td>
+
     <% if order.order_status == "active" %>
         <td class="font-bold text-red-500 p-3">
     <% elsif order.order_status == "complecting" %>
@@ -14,6 +15,15 @@
     <% end %>
             <%= Order.human_enum_name(:order_status, order.order_status) %>
         </td>
+
+    <% if order.phone_call == "please_call" && order.phone_call_status != "did_call" %>
+        <td class="font-bold text-red-500 p-3">
+    <% else %>
+        <td class="p-3">
+    <% end %>
+            <%= Order.human_enum_name(:phone_call, order.phone_call) %>
+        </td>
+
     <td class="p-3">
         <%= I18n.l(order.created_at, format: :long) %>
     </td>

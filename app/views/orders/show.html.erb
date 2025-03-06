@@ -1,10 +1,24 @@
-<div class="grid grid-cols-1 mb-3" >
-    <div class="text-start text-xl font-semibold leading-none">
-        <%= t('.title') %> <%= I18n.l(@order.created_at, format: :long) %> (<%= Order.human_enum_name(:order_status, @order.order_status) %>)
+<div class="grid grid-cols-1">
+    <div class="text-start text-xl font-semibold leading-none mb-3">
+        <%= t('.title') %> <%= I18n.l(@order.created_at, format: :long) %>
+    </div>
+    <div class="text-start font-semibold leading-none mb-3">
+        <%= t('.order_status') %> <%= Order.human_enum_name(:order_status, @order.order_status) %>
     </div>
 </div>
 
 <%= render 'show_order' %>
+
+<% if @order.notation.present? && (can? :update, Order) %>
+    <div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] mb-3">
+        <div class="grid grid-cols-1 p-4">
+            <div class="text-start leading-tight">
+                <p class="font-semibold mb-3"><%= t('.notation') %></p>
+                <%= @order.notation %>
+            </div>            
+        </div>
+    </div>
+<% end %>
 
 <% if (can? :update, Order) && @order.order_status != "sended" %>
     <div class="grid grid-cols-1 mb-3">

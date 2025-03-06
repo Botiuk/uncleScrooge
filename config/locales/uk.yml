@@ -57,8 +57,8 @@ uk:
           sended: "надіслано"
         phone_call: "Перетелефонувати?"
         phone_calls:
-          nit_need: "Непотрібно"
-          please_call: "Так, будь ласка"
+          not_need: "Ні"
+          please_call: "Так"
         phone_call_status: "Клієнту перетелефонували?"
         phone_call_statuses:
           not_avaliable: "Дзвінок не потрібний"
@@ -162,8 +162,10 @@ uk:
     user_profile:
       title: "Профіль користувача"
       my_orders: "Мої покупки"
-      order_date: "Замовлення від"
-      order_price: "нас суму"
+      order_number: "Замовлення №"
+      order_date: "Дата оформлення:"
+      order_price: "Сума замовлення:"
+      order_status: "Статус замовлення:"
       orders_empty: "Немає історії покупок, але це легко виправити. Гайда до покупок!"
       my_delivery_adress: "Мої адреси для доставки"
       delivery_addresses_empty: "Немає збережених адрес"
@@ -342,6 +344,7 @@ uk:
       order_number: "Номер"
       order_price: "Ціна замовлення"
       order_status: "Статус замовлення"
+      order_phone_call: "Перетелефонувати?"
       date: "Дата створення"
     form:
       delivery_address_id: "Адреса доставки:"
@@ -352,12 +355,28 @@ uk:
         payment_card_id: "- виберіть номер картки -"
       without_adress: "В профілі не збережена жодна адреса для доставки"
       without_card: "В профілі не збережена жодна платіжна картка"
+      phone_call:
+        label: "Перетелефонувати?"
+        not_need: "Непотрібно"
+        please_call: "Так, будь ласка"
+      phone_call_status:
+        label: "Клієнту перетелефонували?"
+        not_avaliable: "Дзвінок не потрібний"
+        wait: "Ще ні"
+        did_call: "Так"
+      message: "Додаткові побажання:"
+      notation: "Примітки по замовленню:"
+      placeholder:
+        message: "Наприклад, години коли перетелефонувати"
+        notation: "Примітки про можливі нюанси при обробці замовлення"
     new:
       title: "Нове замовлення"
     edit:
       title: "Редагувати замовлення"
     show:
       title: "Замовлення від"
+      order_status: "Статус замовлення:"
+      notation: "Примітки по замовленню:"
     show_order:
       product_name: "Назва товару"
       price: "Ціна"
@@ -365,3 +384,6 @@ uk:
       sum: "Сума"
       order_total_price: "Загалом:"
       delivery_address: "Доставка:"
+      phone_call: "Телефонний дзвінок:"
+      phone_call_status: "Перетелефонували?"
+      message: "Додаткові побажання:"      

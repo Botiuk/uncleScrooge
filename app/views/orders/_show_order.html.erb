@@ -35,16 +35,37 @@
 
 <%= render 'shared/pagy' %>
 
-<% if @delivery_address.present? %>
-    <div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] mb-3">
-        <div class="p-4">
-            <div class="text-start font-medium leading-tight">
-                <p class="font-semibold mb-3"><%= t('.delivery_address') %></p>
-                <%= DeliveryAddress.human_enum_name(:post_service, @delivery_address.post_service) %><br>
-                <%= @delivery_address.country %><br>
-                <%= @delivery_address.locality %>, <%= @delivery_address.address %><br>
-                <%= @delivery_address.personal_name %>, <%= @delivery_address.phone %>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+    <% if @delivery_address.present? %>
+        <div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] mb-3">
+            <div class="p-4">
+                <div class="text-start leading-tight">
+                    <p class="font-semibold mb-3"><%= t('.delivery_address') %></p>
+                    <%= DeliveryAddress.human_enum_name(:post_service, @delivery_address.post_service) %><br>
+                    <%= @delivery_address.country %><br>
+                    <%= @delivery_address.locality %>, <%= @delivery_address.address %><br>
+                    <%= @delivery_address.personal_name %>, <%= @delivery_address.phone %>
+                </div>
             </div>
         </div>
+    <% end %>
+
+    <div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] mb-3">
+        <div class="grid grid-cols-1 p-4">
+            <div class="text-start font-semibold leading-none">
+                <%= t('.phone_call') %> <%= Order.human_enum_name(:phone_call, @order.phone_call) %>
+            </div>
+            <% if @order.phone_call == "please_call" %>
+                <div class="text-start font-semibold leading-none mt-3">
+                    <%= t('.phone_call_status') %> <%= Order.human_enum_name(:phone_call_status, @order.phone_call_status) %>
+                </div>
+            <% end %>
+            <% if @order.message.present? %>
+                <div class="text-start leading-tight mt-3">
+                    <p class="font-semibold mb-3"><%= t('.message') %></p>
+                    <%= @order.message %>
+                </div>
+            <% end %>
+        </div>
     </div>
-<% end %>
+</div>

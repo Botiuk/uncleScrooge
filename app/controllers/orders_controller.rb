@@ -22,6 +22,7 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
+    @order.phone_call_status = 'wait' if @order.phone_call == 'please_call'
     if @order.save
       create_joins_records
       redirect_to order_path(@order), notice: t('notice.create.order')
@@ -76,7 +77,7 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.expect(order: [:order_status, :order_price, :cart_id, {
+    params.expect(order: [:order_status, :order_price, :cart_id, :phone_call, :phone_call_status, :message, :notation, {
                     delivery_address_order_attributes: [:delivery_address_id],
                     payment_card_order_attributes: [:payment_card_id]
                   }])
