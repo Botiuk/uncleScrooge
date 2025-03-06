@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_26_094814) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_06_071428) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -117,6 +117,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_26_094814) do
     t.bigint "cart_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "phone_call", default: 0, null: false
+    t.integer "phone_call_status", default: 0, null: false
+    t.text "message"
+    t.text "notation"
     t.index ["cart_id"], name: "index_orders_on_cart_id"
   end
 

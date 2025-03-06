@@ -54,18 +54,27 @@ uk:
         order_statuses:
           active: "нове"
           complecting: "збирається"
-          sended: "надіслано"        
+          sended: "надіслано"
+        phone_call: "Перетелефонувати?"
+        phone_calls:
+          nit_need: "Непотрібно"
+          please_call: "Так, будь ласка"
+        phone_call_status: "Клієнту перетелефонували?"
+        phone_call_statuses:
+          not_avaliable: "Дзвінок не потрібний"
+          wait: "Ще ні"
+          did_call: "Так"
         delivery_address_order: "Адреса доставки"
         payment_card_order: "Номер картки"
       delivery_address_order:
         delivery_address: "Поле 'Адреса доставки'"
-      payment_card_order: 
+      payment_card_order:
         payment_card: "Номер картки"
 
   errors:
     messages:
       invalid: "не має значення"
-  
+
   validation:
     ancestry:
       uniq: "має бути унікальна. Така підкатегорія в даній категорії вже є"
@@ -148,7 +157,7 @@ uk:
     index:
       welcome_html: "Вітаємо у нумізматичному магазині &quot;дядько Скрудж&quot;!"
       last_update_products: "Останні надходження"
-    contacts: 
+    contacts:
       title: "Наші контакти"
     user_profile:
       title: "Профіль користувача"
@@ -203,7 +212,7 @@ uk:
         submit: "Надіслати мені іструкції для скидання паролю"
 
   categories:
-    index: 
+    index:
       title: "Категорії товарів"
     new:
       title: "Нова категорія"
@@ -326,7 +335,7 @@ uk:
       title: "Нова картка"
     edit:
       title: "Редагувати картку"
-  
+
   orders:
     index:
       title: "Замовлення"
@@ -346,7 +355,7 @@ uk:
     new:
       title: "Нове замовлення"
     edit:
-      title: "Редагувати замовлення"      
+      title: "Редагувати замовлення"
     show:
       title: "Замовлення від"
     show_order:
