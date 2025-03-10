@@ -107,8 +107,9 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.12.1)
+    devise-i18n (1.13.0)
       devise (>= 4.9.0)
+      rails-i18n
     diff-lcs (1.6.0)
     dotenv (3.1.7)
     drb (2.2.1)
@@ -430,7 +431,7 @@ DEPENDENCIES
   cssbundling-rails (= 1.4.3)
   debug (= 1.10.0)
   devise (= 4.9.4)
-  devise-i18n (= 1.12.1)
+  devise-i18n (= 1.13.0)
   factory_bot_rails (= 6.4.4)
   faker (= 3.5.1)
   image_processing (= 1.14.0)

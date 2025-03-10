@@ -50,7 +50,7 @@ gem 'rails-i18n', '8.0.1'
 # Flexible authentication solution for Rails with Warden
 gem 'devise', '4.9.4'
 # Translations for the devise gem
-gem 'devise-i18n', '1.12.1'
+gem 'devise-i18n', '1.13.0'
 # Simple authorization solution for Rails
 gem 'cancancan', '3.6.1'
 
