@@ -58,7 +58,7 @@ gem 'cancancan', '3.6.1'
 gem 'ancestry', '4.3.3'
 
 # Agnostic pagination in plain ruby
-gem 'pagy', '9.3.3'
+gem 'pagy', '9.3.4'
 
 # Operational controls for Active Job
 gem 'mission_control-jobs', '1.0.2'
