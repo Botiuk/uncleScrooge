@@ -45,7 +45,7 @@ when 'development'
   root_categories_ids = Category.where(ancestry: nil).ids
   10.times do
     Category.create(
-      name: Faker::Address.country,
+      name: Faker::Address.unique.country,
       parent_id: root_categories_ids.sample
     )
   end
@@ -66,7 +66,7 @@ when 'development'
   end
   40.times do
     Category.create(
-      name: Faker::Address.city,
+      name: Faker::Address.unique.city,
       parent_id: root_categories_childrens_ids.sample
     )
   end

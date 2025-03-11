@@ -12,13 +12,13 @@
                     <td class="p-3 text-start">
                         <%= link_to order_item.storehouse.product.name, order_item.storehouse.product %>
                     </td>
-                    <td class="p-3">
+                    <td class="p-3 text-nowrap">
                         <%= number_to_currency(order_item.product_price) %>
                     </td>
                     <td class="p-3">
                         <%= order_item.storehouse.quantity %>
                     </td>
-                    <td class="p-3">
+                    <td class="p-3 text-nowrap">
                         <%= number_to_currency(order_item.storehouse.quantity * order_item.product_price) %>
                     </td>
                 </tr>
@@ -27,7 +27,7 @@
                 <th class="p-3 text-start"><%= t('.order_total_price') %></th>
                 <th></th>
                 <th class="p-3"></th>
-                <th class="p-3"><%= number_to_currency(@order.order_price) %></th>
+                <th class="p-3 text-nowrap"><%= number_to_currency(@order.order_price) %></th>
             </tr>
         </tbody>
     </table>

@@ -37,7 +37,7 @@ gem 'bootsnap', '1.18.4', require: false
 gem 'kamal', '2.5.3', require: false
 
 # Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
-gem 'thruster', '0.1.11', require: false
+gem 'thruster', '0.1.12', require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem 'image_processing', '1.14.0'
@@ -50,7 +50,7 @@ gem 'rails-i18n', '8.0.1'
 # Flexible authentication solution for Rails with Warden
 gem 'devise', '4.9.4'
 # Translations for the devise gem
-gem 'devise-i18n', '1.12.1'
+gem 'devise-i18n', '1.13.0'
 # Simple authorization solution for Rails
 gem 'cancancan', '3.6.1'
 
@@ -58,7 +58,7 @@ gem 'cancancan', '3.6.1'
 gem 'ancestry', '4.3.3'
 
 # Agnostic pagination in plain ruby
-gem 'pagy', '9.3.3'
+gem 'pagy', '9.3.4'
 
 # Operational controls for Active Job
 gem 'mission_control-jobs', '1.0.2'
@@ -90,7 +90,7 @@ group :development do
   gem 'rubocop-performance', '1.24.0', require: false
   # Code style checking for RSpec files
   gem 'rubocop-rspec', '3.5.0', require: false
-  gem 'rubocop-rspec_rails', '2.30.0', require: false
+  gem 'rubocop-rspec_rails', '2.31.0', require: false
   # Code style checking for factory_bot files
   gem 'rubocop-factory_bot', '2.27.0', require: false
 end
