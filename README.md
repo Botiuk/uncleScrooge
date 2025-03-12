@@ -2,7 +2,7 @@
 
 The Numismatic Store "Uncle Scrooge" is the best place to add new items to your collection. 
 
-Built with: Rails 8.0.1, Ruby 3.4.1, postgres, bun, Tailwind, Cloudinary, Trix editor, devise, cancancan, ancestry, pagy.
+Built with: Rails 8.0.2, Ruby 3.4.1, postgres, bun, Tailwind, Cloudinary, Trix editor, devise, cancancan, ancestry, pagy.
 
 Test with: RSpec, factory_bot_rails and faker.
 
