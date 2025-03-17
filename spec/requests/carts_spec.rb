@@ -4,9 +4,9 @@ require 'rails_helper'
 
 RSpec.describe 'Carts' do
   describe 'non registered user management' do
-    it 'cannot GET show' do
-      cart = create(:cart)
-      get cart_path(cart)
+    it 'cannot GET my_cart' do
+      create(:cart)
+      get my_cart_path
       expect(response).to redirect_to(new_user_session_path)
       expect(flash[:alert]).to include I18n.t('devise.failure.unauthenticated')
     end
@@ -21,15 +21,15 @@ RSpec.describe 'Carts' do
       login_as(test_user, scope: :user)
     end
 
-    it 'can GET show' do
-      get cart_path(cart)
-      expect(response).to be_successful
-    end
-
     it 'can DELETE destroy' do
       delete cart_path(cart)
       expect(response).to redirect_to(root_path)
       expect(flash[:notice]).to include(I18n.t('notice.destroy.cart'))
+    end
+
+    it 'can GET my_cart' do
+      get my_cart_path
+      expect(response).to be_successful
     end
 
     it 'can POST add_to_cart when product quantity >= cart' do

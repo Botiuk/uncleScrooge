@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get 'shop', to: 'categories#shop'
   get 'search', to: 'products#search'
   get 'storehouses/search', to: 'storehouses#search'
+  get 'my_cart', to: 'carts#my_cart'
   post 'add_to_cart', to: 'carts#add_to_cart'
   post 'remove_from_cart', to: 'carts#remove_from_cart'
   post 'minus_one_item', to: 'carts#minus_one_item'
@@ -27,7 +28,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :products, except: :destroy
   resources :storehouses, except: :show
-  resources :carts, only: %i[show destroy]
+  resources :carts, only: :destroy
   resources :delivery_addresses, except: %i[index show]
   resources :payment_cards, except: %i[index show]
   resources :orders, except: :destroy

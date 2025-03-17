@@ -5,18 +5,18 @@ class CartsController < ApplicationController
   before_action :check_product_avaliable, only: %i[add_to_cart plus_one_item]
   authorize_resource
 
-  def show
-    storehouses_ids = CartStorehouse.where(cart_id: @cart.id).pluck(:storehouse_id)
-    @pagy, @storehouses = pagy(Storehouse.includes(:product).where(id: storehouses_ids).order(:created_at), limit: 30)
-    cart_total if @storehouses.present?
-  rescue Pagy::OverflowError
-    redirect_to @cart
-  end
-
   def destroy
     @cart.storehouses.each(&:destroy)
     @cart.destroy
     redirect_to root_path, notice: t('notice.destroy.cart')
+  end
+
+  def my_cart
+    storehouses_ids = CartStorehouse.where(cart_id: @cart.id).pluck(:storehouse_id)
+    @pagy, @storehouses = pagy(Storehouse.includes(:product).where(id: storehouses_ids).order(:created_at), limit: 30)
+    cart_total if @storehouses.present?
+  rescue Pagy::OverflowError
+    redirect_to my_cart_path
   end
 
   def add_to_cart
@@ -36,7 +36,8 @@ class CartsController < ApplicationController
 
   def remove_from_cart
     @storehouse.destroy
-    redirect_to @cart, notice: t('notice.destroy.product_from_cart')
+    @cart.destroy if @cart.storehouses.empty?
+    redirect_to my_cart_path, notice: t('notice.destroy.product_from_cart')
   end
 
   def minus_one_item
@@ -45,7 +46,7 @@ class CartsController < ApplicationController
     else
       new_quantity = @storehouse.quantity - 1
       @storehouse.update(quantity: new_quantity)
-      redirect_to @cart
+      redirect_to my_cart_path
     end
   end
 
@@ -53,9 +54,9 @@ class CartsController < ApplicationController
     if @product_avaliable.positive?
       new_quantity = @storehouse.quantity + 1
       @storehouse.update(quantity: new_quantity)
-      redirect_to @cart
+      redirect_to my_cart_path
     else
-      redirect_to @cart, alert: t('alert.update.plus_item_to_cart')
+      redirect_to my_cart_path, alert: t('alert.update.plus_item_to_cart')
     end
   end
 

@@ -290,7 +290,7 @@ uk:
       date: "Дата і час"
 
   carts:
-    show:
+    my_cart:
       title: "Кошик"
       product_name: "Назва товару"
       price: "Ціна"
