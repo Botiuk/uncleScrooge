@@ -14,6 +14,6 @@ class User < ApplicationRecord
   has_one :discount, dependent: :destroy
 
   def create_discount_record
-    role == 'admin' ? Discount.create(user_id: id, percentage: 15).save : Discount.create(user_id: id).save
+    role == 'admin' ? Discount.create(user_id: id, percentage: 15) : Discount.create(user_id: id)
   end
 end

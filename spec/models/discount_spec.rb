@@ -29,8 +29,8 @@ RSpec.describe Discount do
       expect(discount).not_to be_valid
     end
 
-    it 'is not valid if persentage grater than 100' do
-      discount = build(:discount, percentage: 101)
+    it 'is not valid if persentage grater than 20' do
+      discount = build(:discount, percentage: 21)
       expect(discount).not_to be_valid
     end
 
