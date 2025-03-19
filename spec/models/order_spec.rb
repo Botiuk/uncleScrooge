@@ -19,6 +19,11 @@ RSpec.describe Order do
       expect(order).not_to be_valid
     end
 
+    it 'is not valid without order_discount' do
+      order = build(:order, order_discount: nil)
+      expect(order).not_to be_valid
+    end
+
     it 'is valid without message' do
       order = build(:order, message: nil)
       expect(order).to be_valid

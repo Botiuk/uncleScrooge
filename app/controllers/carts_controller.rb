@@ -14,6 +14,7 @@ class CartsController < ApplicationController
   def my_cart
     storehouses_ids = CartStorehouse.where(cart_id: @cart.id).pluck(:storehouse_id)
     @pagy, @storehouses = pagy(Storehouse.includes(:product).where(id: storehouses_ids).order(:created_at), limit: 30)
+    @discount = Discount.where(user_id: @cart.user_id).first.percentage
     cart_total if @storehouses.present?
   rescue Pagy::OverflowError
     redirect_to my_cart_path
@@ -73,10 +74,13 @@ class CartsController < ApplicationController
   def cart_total
     @cart_price = 0
     @cart_items = 0
+    @discount_price = 0
     @storehouses.each do |storehouse|
       @cart_price += storehouse.quantity * storehouse.product.price
       @cart_items += storehouse.quantity
+      @discount_price += storehouse.quantity * storehouse.product.price * @discount * 0.01
     end
+    @price = @cart_price - @discount_price
   end
 
   def add_new_or_update_exist_storehouse

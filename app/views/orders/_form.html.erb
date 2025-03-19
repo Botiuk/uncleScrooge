@@ -3,9 +3,11 @@
         <form class="w-full max-w-lg">
             <%= render 'shared/form_errors_messages', object: form.object %>
 
-            <%= form.hidden_field :order_price, value: form.object.order_price || params[:order_price] %>
+            <%= form.hidden_field :order_price, value: params[:order_price] || form.object.order_price %>
 
-            <%= form.hidden_field :cart_id, value: form.object.cart_id || @cart.id %>
+            <%= form.hidden_field :order_discount, value: params[:order_discount] || form.object.order_discount %>
+
+            <%= form.hidden_field :cart_id, value: @cart.id || form.object.cart_id %>
 
             <% unless @delivery_address.present? %>
                 <div class="flex flex-wrap -mx-3">

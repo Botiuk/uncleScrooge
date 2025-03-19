@@ -25,6 +25,7 @@ class OrdersController < ApplicationController
     @order.phone_call_status = 'wait' if @order.phone_call == 'please_call'
     if @order.save
       create_joins_records
+      discount_system
       redirect_to order_path(@order), notice: t('notice.create.order')
     else
       render :new, status: :unprocessable_entity
@@ -70,6 +71,19 @@ class OrdersController < ApplicationController
     end
   end
 
+  def discount_system
+    discount = Discount.where(user_id: @order.cart.user_id).first
+    discount.update(spent_money: discount.spent_money + @order.order_price)
+    return unless @order.cart.user.role == 'client'
+
+    case discount.reload.spent_money
+    when (0..4999) then discount.update(percentage: 0)
+    when (5000..9999) then discount.update(percentage: 3)
+    when (10_000..20_000) then discount.update(percentage: 5)
+    else discount.update(percentage: 10)
+    end
+  end
+
   def set_order
     @order = Order.find(params[:id])
   rescue ActiveRecord::RecordNotFound
@@ -77,9 +91,10 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.expect(order: [:order_status, :order_price, :cart_id, :phone_call, :phone_call_status, :message, :notation, {
-                    delivery_address_order_attributes: [:delivery_address_id],
-                    payment_card_order_attributes: [:payment_card_id]
-                  }])
+    params.expect(order: [:order_status, :order_price, :order_discount, :cart_id, :phone_call,
+                          :phone_call_status, :message, :notation, {
+                            delivery_address_order_attributes: [:delivery_address_id],
+                            payment_card_order_attributes: [:payment_card_id]
+                          }])
   end
 end

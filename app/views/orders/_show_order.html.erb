@@ -24,10 +24,21 @@
                 </tr>
             <% end %>
             <tr class="odd:bg-gray-100 even:bg-white border text-center">
-                <th class="p-3 text-start"><%= t('.order_total_price') %></th>
-                <th></th>
-                <th class="p-3"></th>
-                <th class="p-3 text-nowrap"><%= number_to_currency(@order.order_price) %></th>
+                <th class="p-3 text-start">
+                    <%= t('.order_total') %>
+                </th>
+                <th colspan="2"></th>
+                <th class="p-3 text-nowrap"><%= number_to_currency(@order.order_price + @order.order_discount) %></th>
+            </tr>
+            <tr class="odd:bg-gray-100 even:bg-white border text-center">
+                <th class="p-3 text-start">
+                    <%= t('.discount') %>                    
+                </th>
+                <th class="p-3 text-nowrap">-<%= number_to_currency(@order.order_discount) %></th>
+                <th class="p-3 text-start">
+                    <%= t('.order_price') %>
+                </th>
+                <th class="p-3 text-nowrap"><%= number_to_currency(@order.order_price) %></th>                
             </tr>
         </tbody>
     </table>

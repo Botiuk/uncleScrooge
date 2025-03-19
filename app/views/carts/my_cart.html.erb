@@ -19,6 +19,7 @@
                     <th class="p-3"><%= t('.price') %></th>
                     <th class="p-3"><%= t('.quantity') %></th>
                     <th class="p-3"><%= t('.sum') %></th>
+                    <th class="p-3"><%= t('.discount') %> <%= @discount %> %</th>
                     <th class="p-3"><%= t('.delete_from_cart') %></th>
                 </tr>
                 <% @storehouses.each do |storehouse| %>
@@ -54,6 +55,9 @@
                         <td class="p-3 text-nowrap">
                             <%= number_to_currency(storehouse.quantity * storehouse.product.price) %>
                         </td>
+                        <td class="p-3 text-nowrap">
+                            -<%= number_to_currency(storehouse.quantity * storehouse.product.price * @discount * 0.01) %>
+                        </td>
                         <td class="p-3">
                             <%= form_with(url: remove_from_cart_path) do |form| %>
                                 <%= form.hidden_field :id, value: storehouse.id %>
@@ -65,11 +69,17 @@
                     </tr>
                 <% end %>
                 <tr class="odd:bg-gray-100 even:bg-white border text-center">
-                    <th class="p-3 text-start"><%= t('.cart_total_price') %></th>
+                    <th class="p-3 text-start"><%= t('.cart_total') %></th>
                     <th></th>
                     <th class="p-3"><%= @cart_items %></th>
                     <th class="p-3 text-nowrap"><%= number_to_currency(@cart_price) %></th>
+                    <th class="p-3 text-nowrap">-<%= number_to_currency(@discount_price) %></th>
                     <th></th>
+                </tr>
+                <tr class="odd:bg-gray-100 even:bg-white border text-center">
+                    <th class="p-3 text-start"><%= t('.cart_price') %></th>
+                    <th colspan="4"></th>
+                    <th class="p-3 text-nowrap"><%= number_to_currency(@price) %></th>
                 </tr>
             </tbody>
         </table>
@@ -89,7 +99,7 @@
 <% if @storehouses.present? && (@cart.expiration_time > DateTime.current) %>
     <div class="grid grid-cols-1 mb-3">
         <div class="text-end my-auto">
-            <%= link_to t('button.add.order'), new_order_path(order_price: @cart_price), method: :post, class: "cursor-pointer bg-gray-300 hover:bg-gray-400 px-3 py-1 font-medium hover:text-gray-800 rounded-full shadow" %>
+            <%= link_to t('button.add.order'), new_order_path(order_price: @price, order_discount: @discount_price), method: :post, class: "cursor-pointer bg-gray-300 hover:bg-gray-400 px-3 py-1 font-medium hover:text-gray-800 rounded-full shadow" %>
         </div>
     </div>
 <% end %>

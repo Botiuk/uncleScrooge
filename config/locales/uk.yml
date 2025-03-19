@@ -161,6 +161,7 @@ uk:
       title: "Наші контакти"
     user_profile:
       title: "Профіль користувача"
+      my_discount: "Моя накопичувальна знижка:"
       my_orders: "Мої покупки"
       order_number: "Замовлення №"
       order_date: "Дата оформлення:"
@@ -296,9 +297,11 @@ uk:
       price: "Ціна"
       quantity: "Кількість, шт."
       sum: "Сума"
+      discount: "Знижка"
       delete_from_cart: "Видалити"
       expiration_date: "Товари заброньовані у кошику до"
-      cart_total_price: "Загалом:"
+      cart_total: "Загалом:"
+      cart_price: "До оплати:"
       cart_empty: "Кошик порожній. Гайда до покупок!"
 
   delivery_addresses:
@@ -379,10 +382,13 @@ uk:
       notation: "Примітки по замовленню:"
     show_order:
       product_name: "Назва товару"
+      discount: "Знижка:"
+      order_total: "Загалом:"
+      order_price: "Оплачено:"
       price: "Ціна"
       quantity: "Кількість, шт."
       sum: "Сума"
-      order_total_price: "Загалом:"
+      order_total_price: "Оплачено:"
       delivery_address: "Доставка:"
       phone_call: "Телефонний дзвінок:"
       phone_call_status: "Перетелефонували?"

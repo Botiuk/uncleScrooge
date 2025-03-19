@@ -12,6 +12,6 @@ class Order < ApplicationRecord
   enum :phone_call, { not_need: 0, please_call: 1 }, default: :not_need
   enum :phone_call_status, { not_avaliable: 0, wait: 1, did_call: 2 }, default: :not_avaliable
 
-  validates :order_price, presence: true
+  validates :order_price, :order_discount, presence: true
   validates_associated :delivery_address_order, :payment_card_order
 end
