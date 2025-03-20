@@ -3,6 +3,7 @@
 class Product < ApplicationRecord
   belongs_to :category
   has_many :storehouses, dependent: nil
+  has_many :sales, dependent: nil
 
   has_many_attached :photos
   has_rich_text :description

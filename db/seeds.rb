@@ -126,6 +126,13 @@ when 'development'
       product_id: product_id,
       quantity: Faker::Number.between(from: 1, to: 30)
     )
+    date = Faker::Date.between(from: 7.days.ago, to: 7.days.from_now)
+    Sale.create(
+      product_id: product_id,
+      percentage: Faker::Number.within(range: 0..30),
+      start_date: date,
+      end_date: (date + 7.days)
+    )
   end
 
   user_ids = User.ids

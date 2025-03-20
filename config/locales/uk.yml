@@ -70,6 +70,11 @@ uk:
         delivery_address: "Поле 'Адреса доставки'"
       payment_card_order:
         payment_card: "Номер картки"
+      sale:
+        percentage: "Процент знижки"
+        start_date: "Дата початку розпродажу"
+        end_date: "Дата завершення розпродажу"
+        product: "Товар"
 
   errors:
     messages:
@@ -392,4 +397,4 @@ uk:
       delivery_address: "Доставка:"
       phone_call: "Телефонний дзвінок:"
       phone_call_status: "Перетелефонували?"
-      message: "Додаткові побажання:"      
+      message: "Додаткові побажання:"

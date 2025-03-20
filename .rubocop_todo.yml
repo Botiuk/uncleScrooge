@@ -21,6 +21,10 @@ Metrics/AbcSize:
     - 'app/validators/payment_card_validator.rb'
     - 'app/controllers/orders_controller.rb'
 
+Metrics/BlockLength:
+  Exclude:
+    - 'db/seeds.rb'
+
 RSpec/ExampleLength:
   Exclude:
     - 'spec/requests/carts_spec.rb'

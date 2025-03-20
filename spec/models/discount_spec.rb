@@ -14,22 +14,22 @@ RSpec.describe Discount do
       expect(discount).not_to be_valid
     end
 
-    it 'is not valid if persentage not integer' do
+    it 'is not valid if percentage not integer' do
       discount = build(:discount, percentage: 5.0)
       expect(discount).not_to be_valid
     end
 
-    it 'is not valid if persentage not number' do
+    it 'is not valid if percentage not number' do
       discount = build(:discount, percentage: 'five')
       expect(discount).not_to be_valid
     end
 
-    it 'is not valid if persentage not positive integer' do
+    it 'is not valid if percentage not positive integer' do
       discount = build(:discount, percentage: -5)
       expect(discount).not_to be_valid
     end
 
-    it 'is not valid if persentage grater than 20' do
+    it 'is not valid if percentage grater than 20' do
       discount = build(:discount, percentage: 21)
       expect(discount).not_to be_valid
     end

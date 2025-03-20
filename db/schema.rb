@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_19_111144) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_20_083022) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -164,6 +164,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_19_111144) do
     t.index ["category_id"], name: "index_products_on_category_id"
   end
 
+  create_table "sales", force: :cascade do |t|
+    t.integer "percentage", null: false
+    t.date "start_date", null: false
+    t.date "end_date", null: false
+    t.bigint "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_sales_on_product_id"
+  end
+
   create_table "storehouses", force: :cascade do |t|
     t.integer "operation_type", null: false
     t.bigint "product_id", null: false
@@ -202,5 +212,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_19_111144) do
   add_foreign_key "payment_card_orders", "payment_cards"
   add_foreign_key "payment_cards", "users"
   add_foreign_key "products", "categories"
+  add_foreign_key "sales", "products"
   add_foreign_key "storehouses", "products"
 end
