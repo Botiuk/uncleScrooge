@@ -1,0 +1,24 @@
+<tr id="<%= dom_id sale %>" class="odd:bg-gray-100 even:bg-white border text-center">
+    <td class="p-3 text-start">
+        <%= link_to sale.product.name, sale.product %>
+    </td>
+    <td class="p-3">
+        <%= sale.percentage %>
+    </td>
+    <td class="p-3">
+        <%= I18n.l(sale.start_date, format: :long) %>
+    </td>
+    <td class="p-3">
+        <%= I18n.l(sale.end_date, format: :long) %>
+    </td>
+    <td class="p-3">
+        <% if (can? :update, sale) && sale.end_date > Date.today %>
+            <%= link_to t('button.edit'), edit_sale_path(sale), class: "cursor-pointer bg-gray-300 hover:bg-gray-400 px-3 py-1 font-medium hover:text-gray-800 rounded-full shadow" %>
+        <% end %>
+    </td>
+    <td class="p-3">
+        <% if (can? :destroy, sale) && sale.start_date > Date.today %>
+            <%= button_to t('button.delete'), sale, method: :delete, data: { turbo_confirm: t('button.delete_confirm') }, class: "cursor-pointer bg-gray-300 hover:bg-gray-400 px-3 py-1 font-medium hover:text-gray-800 rounded-full shadow", form: {style: 'display:inline-block;'} %>
+        <% end %>
+    </td>
+</tr>

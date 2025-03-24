@@ -100,6 +100,14 @@ RSpec.describe 'Storehouses' do
       expect(flash[:alert]).to include I18n.t('alert.cancan_access_denied')
     end
 
+    it 'can PUT update' do
+      storehouse = create(:storehouse, operation_type: 'input', quantity: 5)
+      put storehouse_path(storehouse), params: { storehouse: { quantity: 33 } }
+      expect(storehouse.reload.quantity).to eq(33)
+      expect(response).to redirect_to(storehouses_url)
+      expect(flash[:notice]).to include(I18n.t('notice.update.storehouse'))
+    end
+
     it 'can DELETE destroy, input storehouse' do
       storehouse = create(:storehouse, operation_type: 'input')
       delete storehouse_path(storehouse)

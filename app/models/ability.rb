@@ -35,5 +35,6 @@ class Ability
       storehouse.operation_type == 'input'
     end
     can %i[read update], Order
+    can :manage, Sale
   end
 end

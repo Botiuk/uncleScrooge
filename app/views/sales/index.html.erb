@@ -1,0 +1,31 @@
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+    <div class="text-start text-xl font-semibold leading-none">
+        <%= t('.title') %>
+    </div>
+    <% if can? :create, Sale %>
+        <div class="text-end my-auto">
+            <%= link_to t('button.add.sale'), new_sale_path, method: :post, class: "cursor-pointer bg-gray-300 hover:bg-gray-400 px-3 py-1 font-medium hover:text-gray-800 rounded-full shadow" %>
+        </div>
+    <% end %>
+</div>
+
+<% if @sales.present? %>
+    <div class="py-4 overflow-x-auto" data-turbo="true">
+        <table class="w-full text-sm text-left rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
+            <tbody>
+                <tr class="bg-gray-100 border text-center">
+                    <th class="p-3"><%= t('.product_name') %></th>
+                    <th class="p-3"><%= t('.percentage') %></th>
+                    <th class="p-3"><%= t('.start_date') %></th>
+                    <th class="p-3"><%= t('.end_date') %></th>
+                    <th colspan="2"></th>
+                </tr>
+                <% @sales.each do |sale| %>
+                    <%= render sale %>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+<% end %>
+
+<%= render 'shared/pagy' %>

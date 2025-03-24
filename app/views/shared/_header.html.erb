@@ -71,6 +71,9 @@
                 <% if can? :index, Order %>
                     <%= link_to t('navbar.orders'), orders_path, class: "mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" %>
                 <% end %>
+                <% if can? :index, Sale %>
+                    <%= link_to t('navbar.sales'), sales_path, class: "mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" %>
+                <% end %>
             </div>
         </nav>
         <%= form_tag(search_path, :method => "get", class: "relative mt-6 max-w-lg mx-auto") do %>
