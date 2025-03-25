@@ -6,7 +6,7 @@ class SalesController < ApplicationController
   authorize_resource
 
   def index
-    @pagy, @sales = pagy(Sale.includes(:product).order(updated_at: :desc), limit: 30)
+    @pagy, @sales = pagy(Sale.includes(:product).order(start_date: :desc, end_date: :desc), limit: 30)
   end
 
   def new
@@ -40,7 +40,9 @@ class SalesController < ApplicationController
   private
 
   def products_formhelper
-    @products = Product.order(:name).pluck(:name, :id)
+    product_with_sale_ids = Sale.where('start_date >= ? OR end_date >= ?', Time.zone.today, Time.zone.today)
+                                .pluck(:product_id)
+    @products = Product.where.not(id: product_with_sale_ids).order(:name).pluck(:name, :id)
   end
 
   def set_sale

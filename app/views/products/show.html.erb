@@ -45,7 +45,48 @@
 
 <div class="grid grid-cols-1 gap-3 mb-3">
     <div class="text-start font-medium ps-2">
-        <%= t('.price') %> <%= number_to_currency(@product.price) %>
+        <% if @sale.present? %>
+            <% if @sale.start_date > Time.zone.today %>
+                <%= t('.price') %> <%= number_to_currency(@product.price) %><br>
+                <% if can? :manage, @sale %>
+                    <%= t('.sale') %>
+                    <%= t('.sale_percentage') %> <%= @sale.percentage %> %
+                    <% if can? :update, @sale %>
+                        <%= link_to t('button.edit'), edit_sale_path(@sale), class: "cursor-pointer bg-gray-300 hover:bg-gray-400 px-3 py-1 font-medium hover:text-gray-800 rounded-full shadow" %>
+                    <% end %>
+                    <% if can? :destroy, @sale %>
+                        <%= button_to t('button.delete'), @sale, method: :delete, data: { turbo_confirm: t('button.delete_confirm') }, class: "cursor-pointer bg-gray-300 hover:bg-gray-400 px-3 py-1 font-medium hover:text-gray-800 rounded-full shadow", form: {style: 'display:inline-block;'} %>
+                    <% end %>
+                    <div class="text-gray-500 font-normal">
+                        <%= t('.sale_date') %> <%= I18n.l(@sale.start_date) %> - <%= I18n.l(@sale.end_date) %><br>
+                        <%= t('.sale_price') %> <%= number_to_currency(@product.price - (@product.price * @sale.percentage * 0.01)) %>
+                    </div>
+                <% end %>
+            <% else %>
+                <div class="line-through text-gray-500 font-normal">
+                    <%= t('.price') %> <%= number_to_currency(@product.price) %>
+                </div>
+                <div class="text-red-700">
+                    <%= t('.sale') %>
+                    <%= t('.sale_percentage') %> <%= @sale.percentage %> %
+                    <% if can? :update, @sale %>
+                        <%= link_to t('button.edit'), edit_sale_path(@sale), class: "cursor-pointer bg-gray-300 hover:bg-gray-400 px-3 py-1 font-medium text-gray-700 hover:text-gray-800 rounded-full shadow" %>
+                    <% end %>
+                </div>
+                <div class="text-sm text-red-700 font-normal">
+                    <%= t('.sale_date') %> <%= I18n.l(@sale.start_date) %> - <%= I18n.l(@sale.end_date) %>
+                    (<%= t('.sale_description') %>)
+                </div>
+                <div class="text-red-700">
+                    <%= t('.sale_price') %> <%= number_to_currency(@product.price - (@product.price * @sale.percentage * 0.01)) %>
+                </div>
+            <% end %>
+        <% else %>
+            <%= t('.price') %> <%= number_to_currency(@product.price) %>
+            <% if can? :create, Sale %>
+                <%= link_to t('button.add.sale'), new_sale_path(product_id: @product.id), method: :post, class: "cursor-pointer bg-gray-300 hover:bg-gray-400 px-3 py-1 font-medium hover:text-gray-800 rounded-full shadow" %>
+            <% end %>
+        <% end %>
     </div>
 </div>
 
@@ -69,7 +110,7 @@
                 <div class="font-medium">
                     <%= t('.not_avaliable') %>
                 </div>
-            <% end %>            
+            <% end %>
         </div>
         <div class="font-medium mb-3">
             <% if @storehouse_record.present? %>

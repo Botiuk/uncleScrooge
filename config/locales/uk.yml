@@ -9,6 +9,12 @@ uk:
       long: "%H:%M, %e.%m.%Y"
       long_reverse: "%e.%m.%Y (%H:%M)"
 
+  date:
+    formats:
+      default: "%d.%m.%Y"
+      long: "%e %B %Y"
+      short: "%e %b"
+
   forms:
     messages:
       errors:
@@ -246,6 +252,8 @@ uk:
       title: "Товари"
     product:
       quantity: "шт."
+      sale: "РОЗПРОДАЖ!"
+      sale_percentage: "Знижка:"
     new:
       title: "Новий товар"
     form:
@@ -264,6 +272,11 @@ uk:
       title: "Редагувати товар"
     show:
       price: "Ціна:"
+      sale: "РОЗПРОДАЖ!"
+      sale_date: "Термін дії пропозиції:"
+      sale_percentage: "Знижка:"
+      sale_price: "Ціна зі знижкою:"
+      sale_description: "Або до завершення товару на складі. На товар зі знижкою дисконтна програма не поширюється."
       avaliable: "Доступно, шт.:"
       not_avaliable: "Відсутній на складі"
       in_my_cart: "В моєму кошику, шт.:"

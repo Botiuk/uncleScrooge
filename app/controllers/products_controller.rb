@@ -17,6 +17,7 @@ class ProductsController < ApplicationController
     @category = Category.find(@product.category_id)
     @product_avaliable = Storehouse.count_avaliable_product(@product.id)
     @storehouse_record = @cart.storehouses.find_by(product_id: @product.id) if user_signed_in?
+    @sale = Sale.where(product_id: @product.id).where(end_date: Time.zone.today..).last
   end
 
   def new

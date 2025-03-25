@@ -20,9 +20,20 @@
                 </div>
 
                 <div class="pb-2">
-                    <div class="text-center leading-tight">
-                        <%= number_to_currency(product.price) %>
-                    </div>
+                    <% if @sales.has_key?(product.id) %>
+                        <div class="text-center leading-tight">
+                            <em class="line-through text-gray-500 font-normal">
+                                <%= number_to_currency(product.price) %>
+                            </em>
+                            <b class="ms-2 text-red-700">
+                                <%= number_to_currency(product.price - (product.price * @sales.values_at(product.id).join.to_i * 0.01)) %>
+                            </b>
+                        </div>
+                    <% else %>
+                        <div class="text-center leading-tight">
+                            <%= number_to_currency(product.price) %>
+                        </div>
+                    <% end %>
                 </div>
 
                 <% if user_signed_in? %>
