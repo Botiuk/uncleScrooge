@@ -77,7 +77,7 @@
                     <%= t('.sale_date') %> <%= I18n.l(@sale.start_date) %> - <%= I18n.l(@sale.end_date) %>
                     (<%= t('.sale_description') %>)
                 </div>
-                <div class="text-red-700">
+                <div class="text-red-700 font-semibold">
                     <%= t('.sale_price') %> <%= number_to_currency(@product.price - (@product.price * @sale.percentage * 0.01)) %>
                 </div>
             <% end %>

@@ -1,14 +1,30 @@
 <div class="mb-3 text-center text-xl font-medium leading-tight"><%= t('.welcome_html') %></div>
 
-<div class="grid grid-cols-1 mb-3">
-    <div class="text-start text-xl font-semibold leading-none">
-        <%= t('.last_update_products') %>
-    </div>
-</div>
-
 <% if @products.present? %>
-    <div class="grid grid-cols-2 lg:grid-cols-6 md:grid-cols-4 gap-3">
+    <div class="grid grid-cols-1 mb-3">
+        <div class="text-start text-xl font-semibold leading-none">
+            <%= t('.last_update_products') %>
+        </div>
+    </div>
+
+    <div class="grid auto-cols-[12rem] grid-flow-col overflow-x-auto gap-3 mb-3">
         <% @products.each do |product| %>
+            <% if @avaliable_products.has_key?(product.id) || (can? :manage, Product) %>
+                <%= render product %>
+            <% end %>
+        <% end %>
+    </div>
+<% end %>
+
+<% if @sale_products.present? %>
+    <div class="grid grid-cols-1 mb-3">
+        <div class="text-start text-xl font-semibold leading-none">
+            <%= t('.sale_products') %>
+        </div>
+    </div>
+    
+    <div class="grid auto-cols-[12rem] grid-flow-col overflow-x-auto gap-3 mb-3">
+        <% @sale_products.each do |product| %>
             <% if @avaliable_products.has_key?(product.id) || (can? :manage, Product) %>
                 <%= render product %>
             <% end %>

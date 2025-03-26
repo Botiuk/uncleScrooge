@@ -5,9 +5,12 @@ class MainController < ApplicationController
   authorize_resource class: false
 
   def index
-    last_product_ids = Storehouse.where(operation_type: 'input').order(updated_at: :desc).limit(12).pluck(:product_id)
+    last_product_ids = Storehouse.where(operation_type: 'input')
+                                 .where(updated_at: (Time.zone.today - 1.week)..Time.zone.today)
+                                 .order(updated_at: :desc).pluck(:product_id)
     @products = Product.where(id: last_product_ids)
     avaliable_products_hash
+    @sale_products = Product.where(id: @sales.keys)
   end
 
   def contacts; end

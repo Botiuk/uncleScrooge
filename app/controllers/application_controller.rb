@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
       @avaliable_products << [product.id, product_avaliable] if product_avaliable.positive?
     end
     @avaliable_products = @avaliable_products.to_h
-    @sales = Sale.where('start_date <= ? AND end_date >= ?', Time.zone.today, Time.zone.today)
+    @sales = Sale.where(start_date: ..Time.zone.today, end_date: Time.zone.today..)
                  .pluck(:product_id, :percentage).to_h
   end
 end

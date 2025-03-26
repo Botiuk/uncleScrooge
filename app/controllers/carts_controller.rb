@@ -14,8 +14,13 @@ class CartsController < ApplicationController
   def my_cart
     storehouses_ids = CartStorehouse.where(cart_id: @cart.id).pluck(:storehouse_id)
     @pagy, @storehouses = pagy(Storehouse.includes(:product).where(id: storehouses_ids).order(:created_at), limit: 30)
-    @discount = Discount.where(user_id: @cart.user_id).first.percentage
-    cart_total if @storehouses.present?
+    if @storehouses.present?
+      @discount = Discount.where(user_id: @cart.user_id).first.percentage
+      products_ids = Storehouse.where(id: storehouses_ids).pluck(:product_id)
+      @sales = Sale.where(product_id: products_ids, start_date: ..Time.zone.today, end_date: Time.zone.today..)
+                   .pluck(:product_id, :percentage).to_h
+      cart_total
+    end
   rescue Pagy::OverflowError
     redirect_to my_cart_path
   end
@@ -76,9 +81,14 @@ class CartsController < ApplicationController
     @cart_items = 0
     @discount_price = 0
     @storehouses.each do |storehouse|
+      if @sales.key?(storehouse.product_id)
+        sale_discount = storehouse.product.price * @sales.values_at(storehouse.product_id).join.to_i * 0.01
+        @discount_price += storehouse.quantity * sale_discount
+      else
+        @discount_price += storehouse.quantity * storehouse.product.price * @discount * 0.01
+      end
       @cart_price += storehouse.quantity * storehouse.product.price
       @cart_items += storehouse.quantity
-      @discount_price += storehouse.quantity * storehouse.product.price * @discount * 0.01
     end
     @price = @cart_price - @discount_price
   end
