@@ -9,7 +9,17 @@
 
 <div class="grid grid-cols-1 mb-3">
     <div class="text-start text-lg font-semibold leading-none">
-        <%= t('.my_discount') %> <%= @discount %> %
+        <% if current_user.admin? %>
+            <%= t('.admin_discount') %> <%= @discount.percentage %> %
+        <% else %>
+            <%= t('.my_discount') %> <%= @discount.percentage %> %
+            <p class="text-base font-normal mt-2">
+                <%= t('.discount_system') %>
+            </p>
+        <% end %>
+        <p class="text-base font-normal mt-2">
+            <%= t('.my_spent_money') %> <%= number_to_currency(@discount.spent_money) %>
+        </p>
     </div>
 </div>
 
@@ -20,7 +30,7 @@
 </div>
 
 <% if @orders.present? %>
-    <div class="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-3 mb-3">
+    <div class="grid auto-cols-[24rem] grid-flow-col overflow-x-auto gap-3 mb-3">
         <% @orders.each do |order| %>
             <%= link_to order do %>
                 <div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] mb-3">

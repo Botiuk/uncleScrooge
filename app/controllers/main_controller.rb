@@ -5,10 +5,9 @@ class MainController < ApplicationController
   authorize_resource class: false
 
   def index
-    last_product_ids = Storehouse.where(operation_type: 'input')
-                                 .where(updated_at: (Time.zone.today - 1.week)..Time.zone.today)
+    last_product_ids = Storehouse.where(operation_type: 'input', updated_at: (Time.zone.today - 1.week)..)
                                  .order(updated_at: :desc).pluck(:product_id)
-    @products = Product.where(id: last_product_ids)
+    @products = Product.where(id: last_product_ids.uniq)
     avaliable_products_hash
     @sale_products = Product.where(id: @sales.keys)
   end
@@ -16,7 +15,7 @@ class MainController < ApplicationController
   def contacts; end
 
   def user_profile
-    @discount = current_user.discount.percentage
+    @discount = current_user.discount
     @orders = Order.joins(:cart).where(carts: { user_id: current_user.id }).order(created_at: :desc)
     @delivery_addresses = DeliveryAddress.where(user_id: current_user.id)
     @payment_cards = PaymentCard.where(user_id: current_user.id)

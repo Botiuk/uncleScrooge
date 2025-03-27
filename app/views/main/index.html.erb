@@ -25,9 +25,7 @@
     
     <div class="grid auto-cols-[12rem] grid-flow-col overflow-x-auto gap-3 mb-3">
         <% @sale_products.each do |product| %>
-            <% if @avaliable_products.has_key?(product.id) || (can? :manage, Product) %>
-                <%= render product %>
-            <% end %>
+            <%= render product %>
         <% end %>
     </div>
 <% end %>
