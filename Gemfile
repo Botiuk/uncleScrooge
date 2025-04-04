@@ -80,7 +80,7 @@ group :development do
   gem 'web-console', '4.2.1'
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
-  gem 'brakeman', '7.0.0', require: false
+  gem 'brakeman', '7.0.1', require: false
 
   # RuboCop is a Ruby code style checking and code formatting tool.
   gem 'rubocop', '1.75.1', require: false
